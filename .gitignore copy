@@ -24,7 +24,7 @@ lerna-debug.log*
 # Editor directories and files
 .idea
 .DS_Store
-# .vscode
+.vscode
 *.suo
 *.ntvs*
 *.njsproj

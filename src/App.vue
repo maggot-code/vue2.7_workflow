@@ -1,5 +1,6 @@
 <script setup>
 import GridContainer from '@/biz/Grid/view/GridContainer.vue';
+import BizModules from "@/config/module.conf.js";
 import { useUser } from "@/biz/User";
 
 const admin = useUser();
@@ -8,12 +9,11 @@ console.log(admin);
 
 <template>
     <div class="map-container">
-        <GridContainer name="RainForecast"></GridContainer>
-        <GridContainer name="RealTime"></GridContainer>
-        <GridContainer name="Flood"></GridContainer>
-        <GridContainer name="Inundation"></GridContainer>
-        <GridContainer name="FloodDefence"></GridContainer>
-        <GridContainer name="DigitalTwin"></GridContainer>
+        <template v-for="(row, index) in BizModules">
+            <GridContainer :index="index" :name="row.name" :module="row.module">
+                <component :is="row.component"></component>
+            </GridContainer>
+        </template>
     </div>
 </template>
 

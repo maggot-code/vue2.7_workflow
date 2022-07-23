@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-24 01:28:55
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-24 02:04:59
+ * @LastEditTime: 2022-07-24 02:28:28
  * @Description: 
 -->
 <script setup>
@@ -19,11 +19,16 @@ const props = defineProps({
     },
 });
 
+console.log(props);
+
 useGrid(props.name, props);
 </script>
 
 <template>
-    <div class="grid-container">grid container {{ name }}</div>
+    <div class="grid-container">
+        <h3>grid container {{ name }}</h3>
+        <slot></slot>
+    </div>
 </template>
 
 <style scoped lang='scss'>

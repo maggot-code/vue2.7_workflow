@@ -3,13 +3,10 @@
  * @Author: maggot-code
  * @Date: 2022-07-24 01:28:55
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-24 02:28:28
+ * @LastEditTime: 2022-07-24 13:14:15
  * @Description: 
 -->
 <script setup>
-import {
-    defineProps,
-} from "vue";
 import { useGrid } from "../index";
 
 const props = defineProps({

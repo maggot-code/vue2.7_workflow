@@ -1,9 +1,9 @@
 <!--
- * @FilePath: /vue2.7_workflow/src/biz/Grid/view/GridContainer.vue
+ * @FilePath: \vue2.7_workflow\src\biz\Grid\view\GridContainer.vue
  * @Author: maggot-code
  * @Date: 2022-07-24 01:28:55
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-24 13:14:15
+ * @LastEditTime: 2022-07-25 09:33:24
  * @Description: 
 -->
 <script setup>
@@ -15,8 +15,6 @@ const props = defineProps({
         required: true,
     },
 });
-
-console.log(props);
 
 useGrid(props.name, props);
 </script>

@@ -1,0 +1,13 @@
+{
+    "msg": "success",
+    "code": 200,
+    "data": {
+        "addvcd": "",
+        "truename": "管理员",
+        "hnnm": "",
+        "departmentid": "001",
+        "departmentidname": "北京城市洪涝指挥部",
+        "layers": "",
+        "token": "f617ff29-0546-4bcc-913b-1184d60c146d"
+    }
+}

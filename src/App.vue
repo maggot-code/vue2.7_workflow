@@ -3,10 +3,13 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 09:17:33
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-25 13:45:02
+ * @LastEditTime: 2022-07-25 15:53:42
  * @Description: 
 -->
 <script setup>
+import { useUserLogin } from "@/composable/User";
+const { user } = useUserLogin();
+console.log(user);
 </script>
 
 <template>

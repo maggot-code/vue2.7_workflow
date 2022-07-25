@@ -3,21 +3,14 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 09:17:33
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-25 16:31:46
+ * @LastEditTime: 2022-07-25 16:50:58
  * @Description: 
 -->
 <script setup></script>
 
 <template>
-    <div class="map-container">
-        <h1>App</h1>
-    </div>
+    <router-view></router-view>
 </template>
 
 <style scoped lang='scss'>
-.map-container {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
 </style>

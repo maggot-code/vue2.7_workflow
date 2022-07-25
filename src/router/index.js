@@ -3,11 +3,12 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 16:40:32
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-25 16:42:02
+ * @LastEditTime: 2022-07-25 16:50:10
  * @Description:
  */
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import { default as HomeIndexRoute } from './homeindex';
 
 // 解决ncaught (in promise) NavigationDuplicated 问题
 const originalPush = VueRouter.prototype.push;
@@ -29,7 +30,13 @@ export function setupRouter() {
     Vue.use(VueRouter);
 
     return new VueRouter({
-        routes: [],
+        routes: [
+            {
+                path: '/',
+                redirect: '/home',
+            },
+            HomeIndexRoute,
+        ],
     });
 }
 

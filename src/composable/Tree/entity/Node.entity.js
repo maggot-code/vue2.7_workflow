@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 17:08:46
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-25 17:41:30
+ * @LastEditTime: 2022-07-25 18:05:59
  * @Description:
  */
 function setupMetaNodeDisplayType(node) {

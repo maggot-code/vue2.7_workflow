@@ -3,10 +3,9 @@
  * @Author: maggot-code
  * @Date: 2022-07-26 09:37:12
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-26 10:15:37
+ * @LastEditTime: 2022-07-26 13:51:13
  * @Description:
  */
-import { PathEntity } from '../entity/Path.entity';
 import { ViewEntity } from '../entity/View.entity';
 
 export function useTreeProps(extend = {}) {
@@ -21,8 +20,12 @@ export function useTreeProps(extend = {}) {
             default: () => [],
         },
         path: {
-            type: Object,
-            default: PathEntity,
+            type: Array,
+            default: () => [],
+        },
+        pathString: {
+            type: String,
+            default: '',
         },
         sort: {
             type: Number,
@@ -30,7 +33,7 @@ export function useTreeProps(extend = {}) {
         },
         view: {
             type: Object,
-            default: ViewEntity,
+            default: () => ViewEntity(),
         },
         hasChild: {
             type: Boolean,

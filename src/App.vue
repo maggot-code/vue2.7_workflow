@@ -3,13 +3,17 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 09:17:33
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-25 16:50:58
+ * @LastEditTime: 2022-07-26 10:57:33
  * @Description: 
 -->
-<script setup></script>
+<script setup>
+import LegendContainer from "@/composable/Legend/view/LegendContainer.vue";
+</script>
 
 <template>
-    <router-view></router-view>
+    <LegendContainer>
+        <router-view></router-view>
+    </LegendContainer>
 </template>
 
 <style scoped lang='scss'>

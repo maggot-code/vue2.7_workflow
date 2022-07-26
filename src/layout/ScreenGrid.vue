@@ -3,12 +3,12 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 16:55:44
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-26 09:59:39
+ * @LastEditTime: 2022-07-26 10:58:26
  * @Description: 
 -->
 <script setup>
+import { inject, unref, computed } from "vue";
 import { useTreeProps } from "@/composable/Tree";
-import { computed } from "vue";
 
 const props = defineProps(useTreeProps());
 
@@ -17,10 +17,18 @@ const label = computed(() => {
 
     return props.view.label;
 });
+
+const { setupTitle } = inject("legend");
+
+function handlerLabel() {
+    const val = unref(label);
+    console.log(val);
+    setupTitle(val);
+}
 </script>
 
 <template>
-    <h1>{{ label }}</h1>
+    <h1 @click="handlerLabel">{{ label }}</h1>
 </template>
 
 <style scoped lang='scss'>

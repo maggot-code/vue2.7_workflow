@@ -8,11 +8,17 @@
     &-row{
         position: absolute;
         top:0;
+        height: 100%;
         &:first-child{
             left: 0;
         }
         &:last-child{
             right: 0;
+        }
+        &-item{
+            width: 100%;
+            height: calc(100% / 3);
+            overflow: hidden;
         }
     }
 }

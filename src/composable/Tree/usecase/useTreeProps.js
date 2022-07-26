@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-26 09:37:12
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-26 09:48:03
+ * @LastEditTime: 2022-07-26 10:15:37
  * @Description:
  */
 import { PathEntity } from '../entity/Path.entity';
@@ -24,6 +24,10 @@ export function useTreeProps(extend = {}) {
             type: Object,
             default: PathEntity,
         },
+        sort: {
+            type: Number,
+            default: 0,
+        },
         view: {
             type: Object,
             default: ViewEntity,
@@ -33,6 +37,10 @@ export function useTreeProps(extend = {}) {
             default: false,
         },
         hasParent: {
+            type: Boolean,
+            default: false,
+        },
+        hasChildOnlyone: {
             type: Boolean,
             default: false,
         },

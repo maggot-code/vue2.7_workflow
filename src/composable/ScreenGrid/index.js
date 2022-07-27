@@ -3,8 +3,9 @@
  * @Author: maggot-code
  * @Date: 2022-07-26 15:07:30
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-27 14:37:04
+ * @LastEditTime: 2022-07-27 15:58:27
  * @Description:
  */
 export * from './usecase/useScreenGrid';
 export * from './usecase/useScreenLabel';
+export * from './usecase/useScreenLabelProps';

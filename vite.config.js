@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-23 23:29:33
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-27 15:03:53
+ * @LastEditTime: 2022-07-27 15:06:57
  * @Description:
  */
 import { defineConfig, splitVendorChunkPlugin } from 'vite';
@@ -38,6 +38,7 @@ export default defineConfig({
                 'src/pages',
             ],
             extensions: ['vue', 'tsx'],
+            transformer: 'vue2',
             dts: true,
             deep: true,
         }),

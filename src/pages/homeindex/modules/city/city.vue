@@ -3,14 +3,27 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:50:29
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-25 13:50:41
+ * @LastEditTime: 2022-07-27 17:45:08
  * @Description: 城市内涝模块
 -->
-<script setup ></script>
+<script setup>
+import ScreenHead from "@/composable/ScreenGrid/view/ScreenHead.vue";
+import ScreenMenu from "@/composable/ScreenGrid/view/ScreenMenu.vue";
+
+import { useTreeProps } from "@/composable/Tree";
+
+const props = defineProps(useTreeProps());
+</script>
 
 <template>
-    <h1>city</h1>
+    <div class="modules-container">
+        <ScreenHead :className="['modules-container-head']">
+            <ScreenMenu v-bind="props"></ScreenMenu>
+        </ScreenHead>
+        <div class="modules-container-body"></div>
+    </div>
 </template>
 
 <style scoped lang='scss'>
+@import "@/pages/homeindex/modules.scss";
 </style>

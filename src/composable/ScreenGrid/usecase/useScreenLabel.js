@@ -3,19 +3,44 @@
  * @Author: maggot-code
  * @Date: 2022-07-27 14:35:09
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-27 14:36:34
+ * @LastEditTime: 2022-07-27 16:59:22
  * @Description:
  */
-import { computed } from 'vue';
+import { computed, unref } from 'vue';
+import { toArray } from '@/shared/transform';
 
 export function useScreenLabel(props) {
     const label = computed(() => {
-        const { hasChildOnlyone, view } = props;
-        return hasChildOnlyone ? view.firstLabel : view.label;
+        return props.hasChildOnlyone ? props.view.firstLabel : props.view.label;
+    });
+    const labelClassName = computed(() => {
+        return toArray(props.labelClassName);
+    });
+    const textClassName = computed(() => {
+        return toArray(props.textClassName);
+    });
+    const iconClassName = computed(() => {
+        const iconName = toArray(props.icon(props));
+        const otherClassName = toArray(props.iconClassName);
+
+        return otherClassName.concat(iconName);
     });
 
+    const labelSlot = {
+        props: unref(props),
+        label: unref(label),
+        labelClassName: unref(labelClassName),
+        textClassName: unref(textClassName),
+        iconClassName: unref(iconClassName),
+    };
+
     return {
+        props,
+        labelSlot,
         label,
+        labelClassName,
+        textClassName,
+        iconClassName,
     };
 }
 

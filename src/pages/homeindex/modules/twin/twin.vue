@@ -3,14 +3,27 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:52:31
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-25 13:52:44
+ * @LastEditTime: 2022-07-27 17:44:51
  * @Description: 数字孪生模块
 -->
-<script setup></script>
+<script setup>
+import ScreenHead from "@/composable/ScreenGrid/view/ScreenHead.vue";
+import ScreenMenu from "@/composable/ScreenGrid/view/ScreenMenu.vue";
+
+import { useTreeProps } from "@/composable/Tree";
+
+const props = defineProps(useTreeProps());
+</script>
 
 <template>
-    <h1>twin</h1>
+    <div class="modules-container">
+        <ScreenHead :className="['modules-container-head']">
+            <ScreenMenu v-bind="props"></ScreenMenu>
+        </ScreenHead>
+        <div class="modules-container-body"></div>
+    </div>
 </template>
 
 <style scoped lang='scss'>
+@import "@/pages/homeindex/modules.scss";
 </style>

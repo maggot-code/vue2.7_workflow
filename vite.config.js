@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-23 23:29:33
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-26 11:27:36
+ * @LastEditTime: 2022-07-27 15:03:53
  * @Description:
  */
 import { defineConfig, splitVendorChunkPlugin } from 'vite';
@@ -11,6 +11,7 @@ import vue from '@vitejs/plugin-vue2';
 import legacy from '@vitejs/plugin-legacy';
 import viteComperssion from 'vite-plugin-compression';
 import viteComponents from 'unplugin-vue-components/vite';
+import { ElementUiResolver } from 'unplugin-vue-components/resolvers';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -29,7 +30,7 @@ export default defineConfig({
             deleteOriginFile: false,
         }),
         viteComponents({
-            resolvers: [],
+            resolvers: [ElementUiResolver()],
             dirs: [
                 'src/component',
                 'src/composable',
@@ -45,6 +46,15 @@ export default defineConfig({
         preprocessorOptions: {
             scss: {
                 additionalData: `@import "@/assets/style/var.scss";`,
+            },
+        },
+    },
+    build: {
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    'element-ui': ['element-ui'],
+                },
             },
         },
     },

@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:51:15
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-26 16:01:22
+ * @LastEditTime: 2022-07-27 14:20:55
  * @Description: 预报模块
 -->
 <script setup>
@@ -21,10 +21,10 @@ console.log(props);
     <div class="modules-container">
         <ScreenHead :className="['modules-container-head']">
             <template #label>
-                <ScreenLabel></ScreenLabel>
+                <ScreenLabel v-bind="props"></ScreenLabel>
             </template>
             <template #menu>
-                <ScreenMenu></ScreenMenu>
+                <ScreenMenu v-bind="props"></ScreenMenu>
             </template>
         </ScreenHead>
         <div class="modules-container-body"></div>

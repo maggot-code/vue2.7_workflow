@@ -24,6 +24,7 @@
         "vite-plugin-compression": "^0.5.1"
     },
     "dependencies": {
+        "element-ui": "^2.15.9",
         "lodash": "^4.17.21",
         "maggot-utils": "^1.0.11",
         "normalize.css": "^8.0.1",

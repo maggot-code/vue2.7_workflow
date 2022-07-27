@@ -3,13 +3,20 @@
  * @Author: maggot-code
  * @Date: 2022-07-26 15:33:38
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-26 15:34:35
+ * @LastEditTime: 2022-07-27 14:50:04
  * @Description: 
 -->
-<script setup></script>
+<script setup>
+import { useTreeProps } from "@/composable/Tree";
+import { useScreenLabel } from "@/composable/ScreenGrid";
+
+const props = defineProps(useTreeProps());
+const { label } = useScreenLabel(props);
+
+</script>
 
 <template>
-    <h1>screen menu</h1>
+    <el-popover :title="label"></el-popover>
 </template>
 
 <style scoped lang='scss'>

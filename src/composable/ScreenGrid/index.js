@@ -3,7 +3,8 @@
  * @Author: maggot-code
  * @Date: 2022-07-26 15:07:30
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-26 15:12:46
+ * @LastEditTime: 2022-07-27 14:37:04
  * @Description:
  */
 export * from './usecase/useScreenGrid';
+export * from './usecase/useScreenLabel';

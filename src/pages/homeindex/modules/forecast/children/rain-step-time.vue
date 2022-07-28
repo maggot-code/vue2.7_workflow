@@ -3,13 +3,13 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 14:24:52
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-25 14:25:08
+ * @LastEditTime: 2022-07-28 15:10:59
  * @Description: 预报模块 时段降雨量
 -->
 <script setup></script>
 
 <template>
-    <h2>rain step time</h2>
+    <p>rain step time</p>
 </template>
 
 <style scoped lang='scss'>

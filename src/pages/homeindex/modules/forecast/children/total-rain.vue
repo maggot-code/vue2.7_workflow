@@ -3,13 +3,13 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 14:21:59
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-25 14:22:23
+ * @LastEditTime: 2022-07-28 15:11:02
  * @Description: 预报模块 累计雨量
 -->
 <script setup></script>
 
 <template>
-    <h2>total rain</h2>
+    <p>total rain</p>
 </template>
 
 <style scoped lang='scss'>

@@ -3,13 +3,13 @@
  * @Author: maggot-code
  * @Date: 2022-07-28 11:05:46
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-28 14:35:12
+ * @LastEditTime: 2022-07-28 14:51:00
  * @Description: 
 -->
 <script setup>
 import ScreenNode from "./ScreenNode.vue";
 
-import { computed } from "vue";
+import { onMounted, computed } from "vue";
 import { toArray } from '@/shared/transform';
 import { useTreeProps } from "@/composable/Tree";
 import { useScreenLabelProps, useScreenLabel, useScreenRender } from "@/composable/ScreenGrid";
@@ -32,9 +32,12 @@ const {
 } = useScreenLabel(props);
 const { usableRender } = useScreenRender(props);
 const headClassName = computed(() => toArray(props.className));
+
 function handlerNode(node) {
     emit("clickNode", node);
 }
+
+onMounted(() => { });
 </script>
 
 <template>

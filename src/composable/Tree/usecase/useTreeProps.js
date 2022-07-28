@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-26 09:37:12
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-27 10:01:08
+ * @LastEditTime: 2022-07-28 09:34:03
  * @Description:
  */
 import { ViewEntity } from '../entity/View.entity';
@@ -15,9 +15,17 @@ export function useTreeProps(extend = {}) {
             type: [String, Number],
             required: true,
         },
+        parent: {
+            type: Object,
+            default: () => ({}),
+        },
         children: {
             type: Array,
             default: () => [],
+        },
+        level: {
+            type: Number,
+            default: 0,
         },
         path: {
             type: Array,

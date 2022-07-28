@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:46:02
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-26 15:20:26
+ * @LastEditTime: 2022-07-28 16:13:46
  * @Description: 防汛作战大屏容器
 -->
 <script setup>
@@ -26,7 +26,7 @@ const { gridData } = useScreenGrid({
         <template v-for="(row, index) in gridData">
             <div :key="index" class="home-index-row">
                 <template v-for="(node) in row">
-                    <component class="home-index-row-item" :key="node.id" :is="setupGridComponent(node.view.component)"
+                    <component class="home-index-row-item" :key="node.id" :is="setupGridComponent(node.component)"
                         v-bind="node">
                     </component>
                 </template>

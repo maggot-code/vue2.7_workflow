@@ -3,12 +3,14 @@
  * @Author: maggot-code
  * @Date: 2022-07-26 09:37:12
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-28 14:18:08
+ * @LastEditTime: 2022-07-28 16:24:30
  * @Description:
  */
 import { ViewEntity } from '../entity/View.entity';
+import { v4 } from 'uuid';
 
 export function useTreeProps(extend = {}) {
+    const field = v4();
     return Object.assign({}, extend, {
         pid: 0,
         id: {
@@ -17,7 +19,7 @@ export function useTreeProps(extend = {}) {
         },
         field: {
             type: [String, Number],
-            default: 'unknow',
+            default: field,
         },
         parent: {
             type: Object,
@@ -47,9 +49,13 @@ export function useTreeProps(extend = {}) {
             type: Object,
             default: () => ViewEntity(),
         },
-        hasContinue: {
+        toChild: {
             type: Boolean,
             default: false,
+        },
+        toSelf: {
+            type: Boolean,
+            default: true,
         },
         hasChild: {
             type: Boolean,

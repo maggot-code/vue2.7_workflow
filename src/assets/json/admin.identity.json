@@ -6,13 +6,27 @@
             "pid": "0",
             "name": "降雨预报",
             "component": "forecast",
-            "hasContinue": true,
+            "renderChild": true,
             "children": [
                 {
                     "id": "7",
                     "pid": "1",
                     "name": "降雨预报",
-                    "component": "rain-forecast"
+                    "component": "rain-forecast",
+                    "children": [
+                        {
+                            "id": "71",
+                            "pid": "7",
+                            "name": "调试预报",
+                            "component": "test-forecast"
+                        },
+                        {
+                            "id": "72",
+                            "pid": "7",
+                            "name": "调试降雨",
+                            "component": "test-rain"
+                        }
+                    ]
                 },
                 {
                     "id": "8",

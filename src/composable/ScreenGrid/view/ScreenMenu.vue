@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-28 11:05:46
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-28 11:33:17
+ * @LastEditTime: 2022-07-28 14:35:12
  * @Description: 
 -->
 <script setup>
@@ -12,8 +12,9 @@ import ScreenNode from "./ScreenNode.vue";
 import { computed } from "vue";
 import { toArray } from '@/shared/transform';
 import { useTreeProps } from "@/composable/Tree";
-import { useScreenLabelProps, useScreenLabel } from "@/composable/ScreenGrid";
+import { useScreenLabelProps, useScreenLabel, useScreenRender } from "@/composable/ScreenGrid";
 
+const emit = defineEmits(["clickNode"]);
 const props = defineProps({
     className: {
         type: [Array, String],
@@ -29,16 +30,19 @@ const props = defineProps({
 const {
     label
 } = useScreenLabel(props);
+const { usableRender } = useScreenRender(props);
 const headClassName = computed(() => toArray(props.className));
+function handlerNode(node) {
+    emit("clickNode", node);
+}
 </script>
 
 <template>
-    <el-popover v-if="props.hasChild && !props.hasChildOnlyone" class="screen-menu" placement="left"
-        :class="headClassName" :trigger="trigger">
+    <el-popover v-if="usableRender" class="screen-menu" placement="left" :class="headClassName" :trigger="trigger">
         <div class="scrren-head-theme" slot="reference">{{ label }}</div>
         <div class="screen-head-content">
             <template v-for="(node) in props.children">
-                <ScreenNode :key="node.id" v-bind="node"></ScreenNode>
+                <ScreenNode :key="node.id" v-bind="node" @clickNode="handlerNode"></ScreenNode>
             </template>
         </div>
     </el-popover>

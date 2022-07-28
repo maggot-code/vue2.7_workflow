@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 16:40:32
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-25 16:50:10
+ * @LastEditTime: 2022-07-28 17:17:59
  * @Description:
  */
 import Vue from 'vue';
@@ -35,7 +35,7 @@ export function setupRouter() {
                 path: '/',
                 redirect: '/home',
             },
-            HomeIndexRoute,
+            ...HomeIndexRoute,
         ],
     });
 }

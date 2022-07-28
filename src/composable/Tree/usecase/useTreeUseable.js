@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 17:05:01
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-28 17:01:38
+ * @LastEditTime: 2022-07-28 17:05:18
  * @Description:
  */
 import { ParentNodeEntity } from '../entity/ParentNode.entity';
@@ -20,6 +20,7 @@ export function useTreeUseable(treeData = [], parent = null) {
         }
 
         tonode.view = ViewEntity(tonode);
+        console.log(tonode);
         return tonode;
     });
 

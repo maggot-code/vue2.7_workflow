@@ -3,12 +3,14 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:51:15
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-28 16:39:19
+ * @LastEditTime: 2022-07-28 17:11:32
  * @Description: 预报模块
 -->
 <script setup>
 import { useTreeProps } from "@/composable/Tree";
+
 const props = defineProps(useTreeProps());
+console.log(props);
 </script>
 
 <template>

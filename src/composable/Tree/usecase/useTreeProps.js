@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-26 09:37:12
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-28 16:24:30
+ * @LastEditTime: 2022-07-28 17:08:01
  * @Description:
  */
 import { ViewEntity } from '../entity/View.entity';
@@ -16,6 +16,10 @@ export function useTreeProps(extend = {}) {
         id: {
             type: [String, Number],
             required: true,
+        },
+        name: {
+            type: String,
+            default: '虚拟节点',
         },
         field: {
             type: [String, Number],
@@ -44,6 +48,10 @@ export function useTreeProps(extend = {}) {
         sort: {
             type: Number,
             default: 0,
+        },
+        component: {
+            type: String,
+            default: 'unknow',
         },
         view: {
             type: Object,

@@ -3,18 +3,29 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:51:37
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-29 09:14:29
+ * @LastEditTime: 2022-07-29 11:10:20
  * @Description: 实时监测模块
 -->
 <script setup>
+import { modules } from "./children/install";
+import { useComponentSetup } from '@/composable/Component';
 import { useTreeProps } from "@/composable/Tree";
 
+const setupGridComponent = useComponentSetup(modules);
 const props = defineProps(useTreeProps());
+
+function handlerNode(node) {
+    console.log(node);
+}
 </script>
 
 <template>
     <div class="modules-container">
-        <div class="modules-container-body">body</div>
+        <ScreenMenu :inject="props.field" v-bind="props" @clickNode="handlerNode">
+            <template #default="menuBind">
+                <component :is="setupGridComponent(menuBind.component)" v-bind="menuBind"></component>
+            </template>
+        </ScreenMenu>
     </div>
 </template>
 

@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-26 09:47:01
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-28 16:23:42
+ * @LastEditTime: 2022-07-29 13:09:54
  * @Description:
  */
 import { toString } from '@/shared/transform';
@@ -14,6 +14,11 @@ const ViewProps = {
     name: '虚拟节点',
 };
 
+function setupMetaNodeField(node) {
+    const { toChild, field, children } = node;
+    const [firstNode] = children;
+    return toChild ? toString(firstNode.field, field) : toString(field);
+}
 function setupMetaNodeDisplayType(node) {
     // render | dialog | router | window
     const { toChild, display, children } = node;
@@ -44,6 +49,7 @@ export function ViewEntity(props = {}) {
     const node = Object.assign({}, ViewProps, props);
 
     return {
+        field: setupMetaNodeField(node),
         display: setupMetaNodeDisplayType(node),
         component: setupMetaNodeComponent(node),
         label: setupMetaNodeLabel(node),

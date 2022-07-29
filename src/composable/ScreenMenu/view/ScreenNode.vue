@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-29 09:44:19
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-29 10:43:53
+ * @LastEditTime: 2022-07-29 13:11:07
  * @Description: 
 -->
 <script setup>
@@ -22,7 +22,7 @@ const props = defineProps(useTreeProps({
 const { view } = inject(props.injectName);
 
 const className = computed(() => {
-    const activeClassName = unref(view).component === props.component ? "screen-node-active" : "";
+    const activeClassName = unref(view).field === props.field ? "screen-node-active" : "";
 
     return [
         activeClassName

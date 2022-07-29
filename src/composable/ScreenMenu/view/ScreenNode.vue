@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-29 09:44:19
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-29 13:11:07
+ * @LastEditTime: 2022-07-29 13:34:44
  * @Description: 
 -->
 <script setup>
@@ -45,12 +45,18 @@ function handlerNodeSelf(node) {
 </script>
 
 <template>
-    <div :style="style" @click.stop="handlerNode">
-        <p :class="className">{{ props.name }}</p>
+    <div :style="style">
+        <div :class="className" @click="handlerNode">
+            <p>{{ props.name }}</p>
+        </div>
+
         <div v-if="props.toChild">
             <template v-for="(node) in props.children">
-                <ScreenNode :key="node.id" :injectName="props.injectName" v-bind="node" @clickNode="handlerNodeSelf">
-                </ScreenNode>
+                <slot name="child" v-bind="node">
+                    <ScreenNode :key="node.id" :injectName="props.injectName" v-bind="node"
+                        @clickNode="handlerNodeSelf">
+                    </ScreenNode>
+                </slot>
             </template>
         </div>
     </div>

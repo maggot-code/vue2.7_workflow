@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:49:57
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-29 11:10:28
+ * @LastEditTime: 2022-07-29 13:43:59
  * @Description: 流域洪水模块
 -->
 <script setup>
@@ -13,20 +13,10 @@ import { useTreeProps } from "@/composable/Tree";
 
 const setupGridComponent = useComponentSetup(modules);
 const props = defineProps(useTreeProps());
-
-function handlerNode(node) {
-    console.log(node);
-}
 </script>
 
 <template>
-    <div class="modules-container">
-        <ScreenMenu :inject="props.field" v-bind="props" @clickNode="handlerNode">
-            <template #default="menuBind">
-                <component :is="setupGridComponent(menuBind.component)" v-bind="menuBind"></component>
-            </template>
-        </ScreenMenu>
-    </div>
+    <div class="modules-container">123</div>
 </template>
 
 <style scoped lang='scss'>

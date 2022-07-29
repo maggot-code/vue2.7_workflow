@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-29 10:56:54
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-29 11:01:19
+ * @LastEditTime: 2022-07-29 13:26:54
  * @Description:
  */
 export function useScreenMenuProps() {
@@ -14,7 +14,7 @@ export function useScreenMenuProps() {
         },
         trigger: {
             type: String,
-            default: 'click',
+            default: 'hover',
         },
     };
 }

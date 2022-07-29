@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:51:15
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-29 16:08:35
+ * @LastEditTime: 2022-07-29 17:16:08
  * @Description: 预报模块
 -->
 <script setup>
@@ -11,7 +11,7 @@ import { modules } from "./children/install";
 </script>
 
 <template>
-    <div class="modules-container">123</div>
+    <div class="modules-container">asd</div>
 </template>
 
 <style scoped lang='scss'>

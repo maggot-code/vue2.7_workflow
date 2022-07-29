@@ -3,18 +3,20 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:46:02
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-29 16:35:38
+ * @LastEditTime: 2022-07-29 17:16:00
  * @Description: 防汛作战大屏容器
 -->
 <script setup>
 // import PingguIdentity from "@/assets/json/pinggu.identity.json";
 // import MiyunIdentity from "@/assets/json/miyun.identity.json";
 import AdminIdentity from "@/assets/json/admin.identity.json";
-import { modules } from "./modules/install";
+import components from "./modules/install";
 
 import { useTransform } from "@/composable/Tree";
-import { useComponentNode } from "@/composable/Component";
+import { useComponentNode, useComponent } from "@/composable/Component";
 import { useScreenNode } from "@/composable/Screen";
+
+const { setupName } = useComponent(components);
 
 const { setupTree } = useTransform([
     useComponentNode,

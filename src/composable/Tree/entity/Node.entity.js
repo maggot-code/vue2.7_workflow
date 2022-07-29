@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 17:08:46
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-28 17:01:19
+ * @LastEditTime: 2022-07-29 10:38:51
  * @Description:
  */
 import { v4 } from 'uuid';
@@ -37,13 +37,14 @@ function setupMetaNodeRender(node) {
 }
 
 function setupMetaNode(node, index) {
-    const { children, sort, field } = node;
+    const { children, sort, field, display } = node;
     const hasChild = isArray(children) && children.length > 0;
     const hasChildOnlyone = hasChild && children.length === 1;
 
     return {
         hasChild,
         hasChildOnlyone,
+        display: display || 'render',
         sort: sort || index,
         field: field ?? v4(),
         children: hasChild ? children : [],

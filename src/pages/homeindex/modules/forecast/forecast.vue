@@ -3,20 +3,15 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:51:15
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-29 13:42:58
+ * @LastEditTime: 2022-07-29 16:08:35
  * @Description: 预报模块
 -->
 <script setup>
 import { modules } from "./children/install";
-import { useComponentSetup } from '@/composable/Component';
-import { useTreeProps } from "@/composable/Tree";
-
-const setupGridComponent = useComponentSetup(modules);
-const props = defineProps(useTreeProps());
 </script>
 
 <template>
-    <div class="modules-container">asd</div>
+    <div class="modules-container">123</div>
 </template>
 
 <style scoped lang='scss'>

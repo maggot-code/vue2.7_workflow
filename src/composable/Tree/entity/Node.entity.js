@@ -3,57 +3,51 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 17:08:46
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-29 10:38:51
+ * @LastEditTime: 2022-07-29 15:59:24
  * @Description:
  */
 import { v4 } from 'uuid';
-import { isArray } from 'lodash';
-import { toBoolean } from '@/shared/transform';
+import { flow, isArray } from 'lodash';
+import { mergeNodeToProps } from '../shared/utils';
 
-/**
- * "toChild" or "toSelf" must have one to "true".
- * toSelf 权重高于 toChild.
- * 如果确定 toSelf 为 true，则 toChild 必须为 false.
- * @param {*} node
- * @returns NodeEntity
- */
-function setupMetaNodeRender(node) {
-    const { hasChild, renderSelf, renderChild } = node;
-
-    const renderStatus = {
-        toSelf: toBoolean(renderSelf),
-        toChild: toBoolean(renderChild),
-    };
-
-    // 如果 toChild 为 true，则需要验证是否存在子节点
-    if (!hasChild && renderStatus.toChild) renderStatus.toChild = false;
-
-    // 如果 toChild 为 false 并且 toSelf 也为 false，则 toSelf 必须为 true
-    if (!renderStatus.toChild && !renderStatus.toSelf) {
-        renderStatus.toSelf = true;
-    }
-
-    return Object.assign({}, node, renderStatus);
+function setupKey(config) {
+    return mergeNodeToProps(config, {
+        key: v4(),
+    });
 }
 
-function setupMetaNode(node, index) {
-    const { children, sort, field, display } = node;
-    const hasChild = isArray(children) && children.length > 0;
-    const hasChildOnlyone = hasChild && children.length === 1;
+function setupSort(config) {
+    const { node, index } = config;
 
-    return {
-        hasChild,
+    return mergeNodeToProps(config, {
+        sort: node?.sort ?? index,
+    });
+}
+
+function setupHasChild(config) {
+    const { node } = config;
+    const children = isArray(node.children) ? node.children : [];
+
+    return mergeNodeToProps(config, {
+        hasChild: children.length > 0,
+        children,
+    });
+}
+
+function setupHasChildOnlyone(config) {
+    const { node } = config;
+
+    const hasChildOnlyone = node.hasChild && node.children.length === 1;
+
+    return mergeNodeToProps(config, {
         hasChildOnlyone,
-        display: display || 'render',
-        sort: sort || index,
-        field: field ?? v4(),
-        children: hasChild ? children : [],
-    };
+    });
 }
 
-export function NodeEntity(other, index) {
-    const node = Object.assign({}, other, setupMetaNode(other, index));
-    return setupMetaNodeRender(node);
+export function NodeEntity(config) {
+    return flow([setupKey, setupSort, setupHasChild, setupHasChildOnlyone])(
+        config
+    );
 }
 
 export default NodeEntity;

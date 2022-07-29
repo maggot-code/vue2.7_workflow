@@ -5,50 +5,42 @@
             "id": "1",
             "pid": "0",
             "name": "降雨预报",
-            "component": "forecast",
             "renderChild": true,
             "children": [
                 {
                     "id": "7",
                     "pid": "1",
-                    "name": "降雨预报",
-                    "component": "rain-forecast"
+                    "name": "降雨预报"
                 },
                 {
                     "id": "8",
                     "pid": "1",
-                    "name": "累计雨量",
-                    "component": "total-rain"
+                    "name": "累计雨量"
                 },
                 {
                     "id": "9",
                     "pid": "1",
-                    "name": "最大雨强",
-                    "component": "max-rain"
+                    "name": "最大雨强"
                 },
                 {
                     "id": "10",
                     "pid": "1",
-                    "name": "雨峰时间",
-                    "component": "rain-peak-time"
+                    "name": "雨峰时间"
                 },
                 {
                     "id": "11",
                     "pid": "1",
-                    "name": "降雨开始时间",
-                    "component": "rain-start-time"
+                    "name": "降雨开始时间"
                 },
                 {
                     "id": "12",
                     "pid": "1",
-                    "name": "时段雨量",
-                    "component": "rain-step-time"
+                    "name": "时段雨量"
                 },
                 {
                     "id": "13",
                     "pid": "1",
-                    "name": "雷达回波图",
-                    "component": "radar-echo-map"
+                    "name": "雷达回波图"
                 }
             ]
         }

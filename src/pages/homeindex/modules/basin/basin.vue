@@ -3,16 +3,11 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:49:57
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-29 13:43:59
+ * @LastEditTime: 2022-07-29 16:08:45
  * @Description: 流域洪水模块
 -->
 <script setup>
 import { modules } from "./children/install";
-import { useComponentSetup } from '@/composable/Component';
-import { useTreeProps } from "@/composable/Tree";
-
-const setupGridComponent = useComponentSetup(modules);
-const props = defineProps(useTreeProps());
 </script>
 
 <template>

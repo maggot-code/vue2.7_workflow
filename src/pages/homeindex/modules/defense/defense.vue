@@ -3,16 +3,11 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:50:52
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-29 13:44:24
+ * @LastEditTime: 2022-07-29 16:08:40
  * @Description: 山洪防御模块
 -->
 <script setup>
 import { modules } from "./children/install";
-import { useComponentSetup } from '@/composable/Component';
-import { useTreeProps } from "@/composable/Tree";
-
-const setupGridComponent = useComponentSetup(modules);
-const props = defineProps(useTreeProps());
 </script>
 
 <template>

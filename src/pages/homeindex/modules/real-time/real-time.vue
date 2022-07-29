@@ -3,12 +3,10 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:51:37
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-28 11:31:25
+ * @LastEditTime: 2022-07-29 09:14:29
  * @Description: 实时监测模块
 -->
 <script setup>
-import ScreenMenu from "@/composable/ScreenGrid/view/ScreenMenu.vue";
-
 import { useTreeProps } from "@/composable/Tree";
 
 const props = defineProps(useTreeProps());
@@ -16,7 +14,6 @@ const props = defineProps(useTreeProps());
 
 <template>
     <div class="modules-container">
-        <ScreenMenu className="modules-container-menu" v-bind="props"></ScreenMenu>
         <div class="modules-container-body">body</div>
     </div>
 </template>

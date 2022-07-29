@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:51:15
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-28 17:11:32
+ * @LastEditTime: 2022-07-29 09:10:41
  * @Description: 预报模块
 -->
 <script setup>
@@ -20,7 +20,9 @@ console.log(props);
             <component :key="vnodeKey" v-bind="componentBind"></component>
         </div> -->
         <h1>menu</h1>
-        <h1>body</h1>
+        <div class="modules-container-body">
+            <!-- <component :key="vnodeKey" v-bind="componentBind"></component> -->
+        </div>
     </div>
 </template>
 

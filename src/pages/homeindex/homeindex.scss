@@ -1,21 +1,21 @@
-.home-index{
+.home-index {
     position: relative;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    &-row{
+    &-row {
         position: absolute;
-        top:0;
+        top: 0;
         height: 100%;
-        &:first-child{
+        &:first-child {
             left: 0;
         }
-        &:last-child{
+        &:last-child {
             right: 0;
         }
-        &-item{
+        &-item {
             width: 100%;
             height: calc(100% / 3);
             overflow: hidden;

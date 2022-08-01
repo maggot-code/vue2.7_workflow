@@ -3,19 +3,16 @@
  * @Author: maggot-code
  * @Date: 2022-08-01 10:41:26
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-01 10:52:07
+ * @LastEditTime: 2022-08-01 11:01:49
  * @Description:
  */
 import { shallowRef } from 'vue';
 import { chunk } from 'lodash';
 
-const options = {
-    datasource: [],
-    cut: 3,
-};
+import { GridChunkConfig } from '../shared/config';
 
 export function useScreenGridChunk(props) {
-    const config = Object.assign({}, options, props ?? {});
+    const config = Object.assign({}, GridChunkConfig, props ?? {});
 
     const gridData = shallowRef(chunk(config.datasource, config.cut));
 

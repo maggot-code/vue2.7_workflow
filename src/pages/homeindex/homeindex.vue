@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:46:02
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-01 10:52:37
+ * @LastEditTime: 2022-08-01 10:59:14
  * @Description: 防汛作战大屏容器
 -->
 <script setup>
@@ -12,6 +12,7 @@
 import AdminIdentity from "@/assets/json/admin.identity.json";
 import components from "./modules/install";
 
+import { onMounted } from "vue";
 import { useTransform } from "@/composable/Tree";
 import { useComponentNode, useComponent } from "@/composable/Component";
 import { useScreenNode, useScreenGridChunk } from "@/composable/Screen";
@@ -23,7 +24,13 @@ const { setupTree } = useTransform([
     useScreenNode
 ]);
 
-setupGridData({ datasource: setupTree(AdminIdentity.modules) });
+onMounted(() => {
+    // 允许异步
+    const data = setupTree(AdminIdentity.modules);
+
+    // 允许异步
+    setupGridData({ datasource: data });
+});
 </script>
 
 <template>

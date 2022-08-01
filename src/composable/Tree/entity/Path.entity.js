@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-29 15:12:22
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-29 15:57:27
+ * @LastEditTime: 2022-08-01 13:41:25
  * @Description:
  */
 import { flow } from 'lodash';
@@ -25,8 +25,17 @@ function setupPathString(config) {
     });
 }
 
+function setupLevel(config) {
+    const { parent } = config;
+    const { level } = parent ?? { level: -1 };
+
+    return mergeNodeToProps(config, {
+        level: level + 1,
+    });
+}
+
 export function PathEntity(config) {
-    return flow([setupPath, setupPathString])(config);
+    return flow([setupPath, setupPathString, setupLevel])(config);
 }
 
 export default PathEntity;

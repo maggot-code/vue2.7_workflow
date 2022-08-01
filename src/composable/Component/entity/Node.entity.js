@@ -3,17 +3,17 @@
  * @Author: maggot-code
  * @Date: 2022-07-29 16:12:46
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-29 16:32:16
+ * @LastEditTime: 2022-08-01 13:49:30
  * @Description:
  */
-import { toString, toBoolean } from '@/shared/transform';
+import { toUsabled, toString } from '@/shared/transform';
 import { mergeNodeToProps } from '@/composable/Tree';
 
 export function NodeEntity(config) {
     const { node } = config;
 
     return mergeNodeToProps(config, {
-        hasComponent: toBoolean(node.component),
+        hasComponent: toUsabled(node.component, false, true),
         componentName: toString(node.component, 'unknow'),
     });
 }

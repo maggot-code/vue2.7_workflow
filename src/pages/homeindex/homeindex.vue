@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:46:02
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-01 10:59:14
+ * @LastEditTime: 2022-08-01 13:53:31
  * @Description: 防汛作战大屏容器
 -->
 <script setup>
@@ -18,7 +18,8 @@ import { useComponentNode, useComponent } from "@/composable/Component";
 import { useScreenNode, useScreenGridChunk } from "@/composable/Screen";
 
 const { setupName } = useComponent(components);
-const { gridData, setupGridData } = useScreenGridChunk({ cut: 3 });
+// 允许同步设置值 { datasource:[], cut:5 }
+const { gridData, setupGridData } = useScreenGridChunk();
 const { setupTree } = useTransform([
     useComponentNode,
     useScreenNode

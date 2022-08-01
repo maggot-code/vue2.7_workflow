@@ -1,9 +1,9 @@
 /*
- * @FilePath: \vue2.7_workflow\src\composable\Tree\entity\ParentNode.entity.js
+ * @FilePath: \vue2.7_workflow\src\composable\Tree\entity\Parent.entity.js
  * @Author: maggot-code
  * @Date: 2022-07-25 17:51:58
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-29 16:11:08
+ * @LastEditTime: 2022-08-01 13:39:28
  * @Description:
  */
 import { flow, isNil } from 'lodash';

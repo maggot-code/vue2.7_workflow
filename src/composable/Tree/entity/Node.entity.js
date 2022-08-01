@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 17:08:46
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-29 15:59:24
+ * @LastEditTime: 2022-08-01 13:36:56
  * @Description:
  */
 import { v4 } from 'uuid';
@@ -11,8 +11,10 @@ import { flow, isArray } from 'lodash';
 import { mergeNodeToProps } from '../shared/utils';
 
 function setupKey(config) {
+    const key = v4();
     return mergeNodeToProps(config, {
-        key: v4(),
+        key,
+        nodeKey: key,
     });
 }
 

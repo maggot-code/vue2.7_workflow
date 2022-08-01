@@ -13,14 +13,14 @@
     "devDependencies": {
         "@vitejs/plugin-legacy": "^2.0.0",
         "@vitejs/plugin-vue2": "^1.1.2",
-        "eslint": "^8.20.0",
+        "eslint": "^8.21.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.2.1",
         "prettier": "^2.7.1",
         "sass": "^1.54.0",
         "terser": "^5.14.2",
-        "unplugin-vue-components": "^0.21.1",
-        "vite": "^3.0.0",
+        "unplugin-vue-components": "^0.21.2",
+        "vite": "^3.0.4",
         "vite-plugin-compression": "^0.5.1"
     },
     "dependencies": {

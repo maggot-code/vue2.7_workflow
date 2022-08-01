@@ -6,7 +6,6 @@
             "pid": "0",
             "name": "降雨预报",
             "component": "forecast",
-            "renderChild": true,
             "children": [
                 {
                     "id": "7",

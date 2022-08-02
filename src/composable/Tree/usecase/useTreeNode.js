@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-08-02 15:41:11
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-02 17:23:13
+ * @LastEditTime: 2022-08-02 17:55:06
  * @Description:
  */
 import { provide, useAttrs, computed, unref } from 'vue';
@@ -14,10 +14,14 @@ export function useTreeNode(props, handler = NodeInject) {
     const bind = computed(() => {
         return Object.assign({}, props, attrs);
     });
+    function setupAttrs(tonode) {
+        return Object.assign({}, unref(bind), tonode);
+    }
 
     const output = {
         bind,
         handler,
+        setupAttrs,
     };
 
     provide(unref(bind).nodeKey, output);

@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-29 15:18:02
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-02 17:18:25
+ * @LastEditTime: 2022-08-02 18:03:36
  * @Description:
  */
 export const NodeProps = {
@@ -58,6 +58,13 @@ export const NodeProps = {
     hasChildOnlyone: {
         type: Boolean,
         default: false,
+    },
+};
+
+export const NodeDomProps = {
+    nodeClass: {
+        type: [String, Array],
+        default: () => [],
     },
 };
 

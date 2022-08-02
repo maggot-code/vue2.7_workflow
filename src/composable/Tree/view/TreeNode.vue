@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-08-01 23:03:27
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-02 17:29:56
+ * @LastEditTime: 2022-08-02 18:02:05
  * @Description: 
 -->
 <script setup>
@@ -11,31 +11,35 @@ import FragmentNode from "./FragmentNode.vue";
 import TreeNode from "./TreeNode.vue";
 
 import { inject, computed, unref } from "vue";
-import { NodeProps } from "../shared/props";
+import { useNodeProps } from "../usecase/useNodeProps";
 import { useTreeNode } from "../usecase/useTreeNode";
+import { toArray } from "@/shared/transform";
 
-const props = defineProps(NodeProps);
-const { bind } = useTreeNode(props);
+const props = defineProps(useNodeProps());
+const { bind, setupAttrs } = useTreeNode(props);
 
 const { handler } = inject(unref(bind).parent.nodeKey);
 
-const style = computed(() => {
-    const offset = (unref(bind).level - 1) * 24;
+const nodeClassName = computed(() => {
+    const nodeClass = toArray(unref(bind).nodeClass);
 
+    return [].concat(nodeClass);
+});
+const nodeStyle = computed(() => {
     return {
-        paddingLeft: `${offset}px`
-    }
+        color: "pink",
+    };
 });
 </script>
 
 <template>
-    <div :style="style">
+    <div :class="nodeClassName" :style="nodeStyle">
         <slot name="tonode" v-bind="bind">
             <FragmentNode v-bind=bind />
         </slot>
 
         <template v-if="handler.doRecursion(bind)">
-            <TreeNode v-for="(node) in bind.children" :key="node.nodeKey" v-bind="node">
+            <TreeNode v-for="(node) in bind.children" :key="node.nodeKey" v-bind="setupAttrs(node)">
                 <template #tonode="tonode">
                     <slot name="tonode" v-bind="tonode">
                         <FragmentNode v-bind="tonode" />

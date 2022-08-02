@@ -1,9 +1,9 @@
 <!--
- * @FilePath: /vue2.7_workflow/src/pages/homeindex/modules/forecast/forecast.vue
+ * @FilePath: \vue2.7_workflow\src\pages\homeindex\modules\forecast\forecast.vue
  * @Author: maggot-code
  * @Date: 2022-07-25 13:51:15
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-02 00:30:52
+ * @LastEditTime: 2022-08-02 10:06:36
  * @Description: 预报模块
 -->
 <script setup>
@@ -11,8 +11,7 @@ import components from "./children/install";
 import TreeView from "@/composable/Tree/view/TreeView.vue";
 import TreeNode from "@/composable/Tree/view/TreeNode.vue";
 
-import { computed } from "vue";
-import { useNodeProps, useTreeView } from "@/composable/Tree";
+import { useNodeProps } from "@/composable/Tree";
 import { useComponentProps, useComponent } from "@/composable/Component";
 import { useScreenNodeProps } from "@/composable/Screen";
 
@@ -21,12 +20,6 @@ const props = defineProps({
     ...useNodeProps(),
     ...useComponentProps(),
     ...useScreenNodeProps(),
-});
-
-const { onRecursion, viewBind } = useTreeView(props);
-
-onRecursion(() => {
-    console.log(11);
 });
 </script>
 
@@ -39,7 +32,6 @@ onRecursion(() => {
     <p v-else>{{ props.componentName }}</p> -->
     <div>
         <p>{{ props.componentName }}</p>
-        <TreeView v-bind="viewBind"></TreeView>
     </div>
 </template>
 

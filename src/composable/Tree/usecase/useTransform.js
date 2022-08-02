@@ -3,13 +3,17 @@
  * @Author: maggot-code
  * @Date: 2022-07-29 15:21:03
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-29 16:02:04
+ * @LastEditTime: 2022-08-02 13:32:08
  * @Description:
  */
 import { useNodeSetup } from './useNodeSetup';
 
 const sortToASC = (prev, next) => prev.sort - next.sort;
-// const sortToDESC = (prev, next) => next.sort - prev.sort;
+const sortToDESC = (prev, next) => next.sort - prev.sort;
+const setupTreeProps = {
+    parent: null,
+    sort: sortToASC,
+};
 
 export function useTransform(setupExtends = []) {
     function setupNodeToUsable(parent, node, index, _datasource) {
@@ -25,7 +29,9 @@ export function useTransform(setupExtends = []) {
         return tonode;
     }
 
-    function setupTree(tree, parent = null) {
+    function setupTree(tree, config = {}) {
+        const { parent, sort } = Object.assign({}, setupTreeProps, config);
+
         return tree
             .map((node, index, datasource) => {
                 const tonode = setupNodeToUsable(
@@ -36,17 +42,22 @@ export function useTransform(setupExtends = []) {
                 );
 
                 if (tonode?.hasChild) {
-                    tonode.children = setupTree(tonode.children, tonode);
+                    tonode.children = setupTree(tonode.children, {
+                        parent: tonode,
+                        sort,
+                    });
                 }
 
                 return tonode;
             })
-            .sort(sortToASC);
+            .sort(sort);
     }
 
     return {
         setupNodeToUsable,
         setupTree,
+        sortToASC,
+        sortToDESC,
     };
 }
 

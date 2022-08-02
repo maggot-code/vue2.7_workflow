@@ -49,7 +49,20 @@
                     "id": "11",
                     "pid": "1",
                     "name": "降雨开始时间",
-                    "component": "rain-start-time"
+                    "component": "rain-start-time",
+                    "renderChild": true,
+                    "children": [
+                        {
+                            "id": "111",
+                            "pid": "11",
+                            "name": "开始了"
+                        },
+                        {
+                            "id": "112",
+                            "pid": "11",
+                            "name": "结束了"
+                        }
+                    ]
                 },
                 {
                     "id": "12",

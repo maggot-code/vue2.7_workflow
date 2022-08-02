@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:46:02
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-01 13:53:31
+ * @LastEditTime: 2022-08-02 14:29:32
  * @Description: 防汛作战大屏容器
 -->
 <script setup>
@@ -14,34 +14,28 @@ import components from "./modules/install";
 
 import { onMounted } from "vue";
 import { useTransform } from "@/composable/Tree";
-import { useComponentNode, useComponent } from "@/composable/Component";
-import { useScreenNode, useScreenGridChunk } from "@/composable/Screen";
+import { useComponent, useComponentNode } from "@/composable/Component";
+import { useScreenGridChunk } from "@/composable/Screen";
 
+const { gridCutRef, setupGridCut } = useScreenGridChunk();
 const { setupName } = useComponent(components);
-// 允许同步设置值 { datasource:[], cut:5 }
-const { gridData, setupGridData } = useScreenGridChunk();
 const { setupTree } = useTransform([
-    useComponentNode,
-    useScreenNode
+    useComponentNode
 ]);
 
 onMounted(() => {
-    // 允许异步
-    const data = setupTree(AdminIdentity.modules);
-
-    // 允许异步
-    setupGridData({ datasource: data });
+    const datasource = setupTree(AdminIdentity.modules);
+    setupGridCut({ datasource });
+    console.log(datasource);
 });
 </script>
 
 <template>
     <div class="home-index">
-        <template v-for="(row, index) in gridData">
-            <div :key="index" class="home-index-row">
+        <template v-for="(row, index) in gridCutRef">
+            <div :key="index">
                 <template v-for="(node) in row">
-                    <component class="home-index-row-item" :key="node.key" :is="setupName(node.component)"
-                        v-bind="node">
-                    </component>
+                    <component :key="node.nodeKey" :is="setupName(node.component)" v-bind="node"></component>
                 </template>
             </div>
         </template>

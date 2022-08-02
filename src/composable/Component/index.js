@@ -3,9 +3,9 @@
  * @Author: maggot-code
  * @Date: 2022-07-29 16:09:33
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-01 13:43:35
+ * @LastEditTime: 2022-08-02 13:38:41
  * @Description:
  */
-export * from './usecase/useComponentProps';
+export * from './shared/props';
 export * from './usecase/useComponentNode';
 export * from './usecase/useComponent';

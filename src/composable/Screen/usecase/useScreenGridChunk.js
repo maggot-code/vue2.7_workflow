@@ -3,27 +3,30 @@
  * @Author: maggot-code
  * @Date: 2022-08-01 10:41:26
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-01 11:01:49
+ * @LastEditTime: 2022-08-02 13:08:46
  * @Description:
  */
-import { shallowRef } from 'vue';
+import { unref, ref } from 'vue';
 import { chunk } from 'lodash';
 
-import { GridChunkConfig } from '../shared/config';
+export const GridChunkConfig = {
+    datasource: [],
+    cut: 3,
+};
 
 export function useScreenGridChunk(props) {
     const config = Object.assign({}, GridChunkConfig, props ?? {});
 
-    const gridData = shallowRef(chunk(config.datasource, config.cut));
+    const gridCutRef = ref(chunk(unref(config.datasource), unref(config.cut)));
 
-    const setupGridData = (props) => {
+    const setupGridCut = (props) => {
         const { datasource, cut } = Object.assign({}, config, props ?? {});
-        gridData.value = chunk(datasource, cut);
+        gridCutRef.value = chunk(unref(datasource), unref(cut));
     };
 
     return {
-        gridData,
-        setupGridData,
+        gridCutRef,
+        setupGridCut,
     };
 }
 

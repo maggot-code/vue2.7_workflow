@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:46:02
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-08 16:20:57
+ * @LastEditTime: 2022-08-08 17:08:49
  * @Description: 防汛作战大屏容器
 -->
 <script setup>
@@ -14,7 +14,7 @@ import components from "./modules/install";
 
 import { onMounted } from "vue";
 import { defineCustomComponent } from "@/composable/Component";
-import { useScreenTree } from "@/composable/Screen";
+import { useScreenTree } from "@/biz/Screen";
 
 const { setupName } = defineCustomComponent(components);
 const { screenTreeCut, setupScreenTree } = useScreenTree();

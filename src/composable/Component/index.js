@@ -3,9 +3,12 @@
  * @Author: maggot-code
  * @Date: 2022-07-29 16:09:33
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-02 13:38:41
+ * @LastEditTime: 2022-08-08 16:16:53
  * @Description:
  */
+import { useComponent } from './usecase/useComponent';
+
 export * from './shared/props';
 export * from './usecase/useComponentNode';
 export * from './usecase/useComponent';
+export const defineCustomComponent = useComponent;

@@ -3,13 +3,17 @@
  * @Author: maggot-code
  * @Date: 2022-07-29 15:18:02
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-02 18:03:36
+ * @LastEditTime: 2022-08-08 15:35:29
  * @Description:
  */
 export const NodeProps = {
     nodeKey: {
         type: [String, Number],
         require: true,
+    },
+    nodePath: {
+        type: Array,
+        default: () => [],
     },
     id: {
         type: [String, Number],
@@ -35,10 +39,6 @@ export const NodeProps = {
         type: Array,
         default: () => [],
     },
-    pathString: {
-        type: String,
-        default: '',
-    },
     sort: {
         type: Number,
         default: 0,
@@ -58,13 +58,6 @@ export const NodeProps = {
     hasChildOnlyone: {
         type: Boolean,
         default: false,
-    },
-};
-
-export const NodeDomProps = {
-    nodeClass: {
-        type: [String, Array],
-        default: () => [],
     },
 };
 

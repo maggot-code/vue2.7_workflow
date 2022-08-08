@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-29 15:12:22
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-01 13:41:25
+ * @LastEditTime: 2022-08-08 15:34:21
  * @Description:
  */
 import { flow } from 'lodash';
@@ -12,16 +12,13 @@ import { mergeNodeToProps } from '../shared/utils';
 function setupPath(config) {
     const { parent, node } = config;
     const path = node.hasParent ? [...parent.path, node.id] : [node.id];
+    const nodePath = node.hasParent
+        ? [...parent.nodePath, node.nodeKey]
+        : [node.nodeKey];
 
     return mergeNodeToProps(config, {
         path,
-    });
-}
-
-function setupPathString(config) {
-    const { node } = config;
-    return mergeNodeToProps(config, {
-        pathString: node.path.join(','),
+        nodePath,
     });
 }
 
@@ -35,7 +32,7 @@ function setupLevel(config) {
 }
 
 export function PathEntity(config) {
-    return flow([setupPath, setupPathString, setupLevel])(config);
+    return flow([setupPath, setupLevel])(config);
 }
 
 export default PathEntity;

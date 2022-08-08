@@ -3,12 +3,11 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 17:08:46
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-02 15:01:19
+ * @LastEditTime: 2022-08-08 15:07:08
  * @Description:
  */
 import { v4 } from 'uuid';
 import { flow, isArray } from 'lodash';
-import { toBoolean } from '@/shared/transform';
 import { mergeNodeToProps } from '../shared/utils';
 
 function setupKey(config) {
@@ -47,25 +46,10 @@ function setupHasChildOnlyone(config) {
     });
 }
 
-function _setupRenderChild(config) {
-    const { node } = config;
-
-    const renderChild = toBoolean(node.renderChild);
-    const status = renderChild && node.hasChild && !node.hasChildOnlyone;
-
-    return mergeNodeToProps(config, {
-        renderChild: status,
-    });
-}
-
 export function NodeEntity(config) {
-    return flow([
-        setupKey,
-        setupSort,
-        setupHasChild,
-        setupHasChildOnlyone,
-        // setupRenderChild,
-    ])(config);
+    return flow([setupKey, setupSort, setupHasChild, setupHasChildOnlyone])(
+        config
+    );
 }
 
 export default NodeEntity;

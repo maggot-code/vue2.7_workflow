@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:46:02
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-08 17:08:49
+ * @LastEditTime: 2022-08-09 13:29:27
  * @Description: 防汛作战大屏容器
 -->
 <script setup>
@@ -27,12 +27,10 @@ onMounted(() => {
 
 <template>
     <div class="home-index">
-        <template v-for="(row, index) in screenTreeCut">
-            <div :key="index">
-                <template v-for="(node) in row">
-                    <component :key="node.nodeKey" :is="setupName(node.componentName)" v-bind="node"></component>
-                </template>
-            </div>
+        <template v-for="(row) in screenTreeCut">
+            <template v-for="(node) in row">
+                <component :key="node.nodeKey" :is="setupName(node.componentName)" v-bind="node"></component>
+            </template>
         </template>
     </div>
 </template>

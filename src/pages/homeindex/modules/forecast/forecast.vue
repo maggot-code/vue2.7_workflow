@@ -3,22 +3,20 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:51:15
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-08 17:14:02
+ * @LastEditTime: 2022-08-09 13:39:29
  * @Description: 预报模块
 -->
 <script setup>
 import { ScreenMenu, useScreenProps } from "@/biz/Screen";
 
 const props = defineProps(useScreenProps());
+function handlerNode({ valid }) {
+    console.log(valid.componentName);
+}
 </script>
 
 <template>
-    <ScreenMenu v-bind="props">
-        <!-- <template #default="node">
-            <p>{{ node.name }}</p>
-            <p>{{ node.pathString }}</p>
-        </template> -->
-    </ScreenMenu>
+    <ScreenMenu v-bind="props" @change="handlerNode"></ScreenMenu>
 </template>
 
 <style scoped lang='scss'>

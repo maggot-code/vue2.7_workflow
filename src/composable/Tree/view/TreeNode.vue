@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-08-01 23:03:27
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-09 10:31:06
+ * @LastEditTime: 2022-08-09 13:28:07
  * @Description: 
 -->
 <script setup>
@@ -11,13 +11,14 @@ import FragmentNode from "./FragmentNode.vue";
 import TreeNode from "./TreeNode.vue";
 
 import { useAttrs, inject, computed } from "vue";
+import { TreeNodeConfig } from "../usecase/useTreeNode";
 import { useNodeProps } from "../usecase/useNodeProps";
 import { toBoolean } from "@/shared/transform";
 import { assign } from "lodash";
 
 const props = defineProps(useNodeProps());
 const attrs = useAttrs();
-const { toLoop } = inject(props.nodePath[0]);
+const { toLoop } = inject(props.nodePath[0], TreeNodeConfig);
 
 const doLoop = computed(() => {
     return toBoolean(toLoop(assign({}, props, attrs)));
@@ -25,7 +26,7 @@ const doLoop = computed(() => {
 </script>
 
 <template>
-    <div>
+    <div class="tree-node">
         <slot name="tonode" v-bind="props">
             <FragmentNode v-bind="props" />
         </slot>
@@ -43,4 +44,9 @@ const doLoop = computed(() => {
 </template>
 
 <style scoped lang='scss'>
+.tree-node {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
 </style>

@@ -3,13 +3,19 @@
  * @Author: maggot-code
  * @Date: 2022-08-02 17:27:35
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-02 17:28:02
+ * @LastEditTime: 2022-08-09 09:24:26
  * @Description: 
 -->
-<script setup></script>
+<script setup>
+import { useNodeProps } from "../usecase/useNodeProps";
+
+const props = defineProps(useNodeProps());
+</script>
 
 <template>
-    <p>fragment node</p>
+    <div>
+        <p>{{ props.nodeKey }}</p>
+    </div>
 </template>
 
 <style scoped lang='scss'>

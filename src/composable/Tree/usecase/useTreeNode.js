@@ -3,30 +3,26 @@
  * @Author: maggot-code
  * @Date: 2022-08-02 15:41:11
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-02 17:55:06
+ * @LastEditTime: 2022-08-09 10:20:25
  * @Description:
  */
-import { provide, useAttrs, computed, unref } from 'vue';
-import { NodeInject } from '../shared/inject';
+import { provide } from 'vue';
+import { cloneDeep, assign } from 'lodash';
 
-export function useTreeNode(props, handler = NodeInject) {
-    const attrs = useAttrs();
-    const bind = computed(() => {
-        return Object.assign({}, props, attrs);
-    });
-    function setupAttrs(tonode) {
-        return Object.assign({}, unref(bind), tonode);
-    }
+function setupToloop(node) {
+    return node.hasChild;
+}
 
-    const output = {
-        bind,
-        handler,
-        setupAttrs,
-    };
+export const TreeNodeConfig = {
+    toLoop: setupToloop,
+};
 
-    provide(unref(bind).nodeKey, output);
+export function useTreeNode(props, config = TreeNodeConfig) {
+    const bind = assign(TreeNodeConfig, cloneDeep(config));
 
-    return output;
+    provide(props.nodeKey, bind);
+
+    return {};
 }
 
 export default useTreeNode;

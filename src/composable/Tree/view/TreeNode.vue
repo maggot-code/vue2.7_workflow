@@ -3,45 +3,42 @@
  * @Author: maggot-code
  * @Date: 2022-08-01 23:03:27
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-08 18:03:23
+ * @LastEditTime: 2022-08-09 10:31:06
  * @Description: 
 -->
 <script setup>
 import FragmentNode from "./FragmentNode.vue";
 import TreeNode from "./TreeNode.vue";
 
-import { onMounted, onBeforeUnmount, unref, ref } from "vue";
+import { useAttrs, inject, computed } from "vue";
 import { useNodeProps } from "../usecase/useNodeProps";
 import { toBoolean } from "@/shared/transform";
+import { assign } from "lodash";
 
-const emits = defineEmits(["doRecursion"]);
 const props = defineProps(useNodeProps());
-const toRecursion = ref(props.hasChild);
+const attrs = useAttrs();
+const { toLoop } = inject(props.nodePath[0]);
 
-onMounted(() => {
-    console.log(unref(toRecursion));
-});
-onBeforeUnmount(() => {
-    toRecursion.value = false;
+const doLoop = computed(() => {
+    return toBoolean(toLoop(assign({}, props, attrs)));
 });
 </script>
 
 <template>
     <div>
-        <h1>tree node</h1>
-        <!-- <slot name="tonode" v-bind="bind">
-            <FragmentNode v-bind=bind />
+        <slot name="tonode" v-bind="props">
+            <FragmentNode v-bind="props" />
         </slot>
 
-        <template v-if="handler.doRecursion(bind)">
-            <TreeNode v-for="(node) in bind.children" :key="node.nodeKey" v-bind="setupAttrs(node)">
+        <template v-if="doLoop">
+            <TreeNode v-for="(node) in props.children" :key="node.nodeKey" v-bind="node">
                 <template #tonode="tonode">
                     <slot name="tonode" v-bind="tonode">
                         <FragmentNode v-bind="tonode" />
                     </slot>
                 </template>
             </TreeNode>
-        </template> -->
+        </template>
     </div>
 </template>
 

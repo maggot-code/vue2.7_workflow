@@ -3,30 +3,36 @@
  * @Author: maggot-code
  * @Date: 2022-08-02 16:57:47
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-08 18:09:21
+ * @LastEditTime: 2022-08-09 10:42:36
  * @Description: 
 -->
 <script setup>
-import { unref, ref } from "vue";
+import ScreenNode from "./ScreenNode.vue";
+import ScreenLabel from "./ScreenLabel.vue";
+
 import { useScreenProps } from "../usecase/useScreenProps";
-import { TreeNode } from "@/composable/Tree";
+import { TreeNode, defineTreeNode } from "@/composable/Tree";
 
 const props = defineProps(useScreenProps());
-const name = ref(props.name);
+defineTreeNode(props, {
+    toLoop: setupToloop
+});
 
-let a = 0;
-function setupRecursion(node) {
-    a++;
-    console.log(node);
-    console.log(a);
-    return true;
+function setupToloop(node) {
+    return node.hasChild && !node.hasChildOnlyone && node.renderChild;
 }
 </script>
 
 <template>
     <div>
-        <h1>{{ name }}</h1>
-        <TreeNode v-if="setupRecursion(props)" v-bind="props"></TreeNode>
+        <ScreenLabel></ScreenLabel>
+        <template v-for="(node) in props.children">
+            <TreeNode :key="node.nodeKey" v-bind="node">
+                <template #tonode="tonode">
+                    <ScreenNode v-bind="tonode"></ScreenNode>
+                </template>
+            </TreeNode>
+        </template>
     </div>
 </template>
 

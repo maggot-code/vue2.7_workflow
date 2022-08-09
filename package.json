@@ -17,16 +17,19 @@
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.2.1",
         "prettier": "^2.7.1",
+        "rollup-plugin-visualizer": "^5.7.1",
         "sass": "^1.54.0",
         "terser": "^5.14.2",
         "unplugin-vue-components": "^0.21.2",
         "vite": "^3.0.4",
-        "vite-plugin-compression": "^0.5.1"
+        "vite-plugin-compression": "^0.5.1",
+        "vite-plugin-mars3d": "^1.1.4"
     },
     "dependencies": {
         "element-ui": "^2.15.9",
         "lodash": "^4.17.21",
         "maggot-utils": "^1.0.11",
+        "mars3d": "^3.4.3",
         "normalize.css": "^8.0.1",
         "ua-parser-js": "^1.0.2",
         "uuid": "^8.3.2",

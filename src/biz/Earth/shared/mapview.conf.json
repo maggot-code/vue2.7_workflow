@@ -1,0 +1,70 @@
+{
+    "scene": {
+        "globe": {
+            "show": true,
+            "baseColor": "#666666",
+            "depthTestAgainstTerrain": true,
+            "showGroundAtmosphere": true,
+            "enableLighting": false,
+            "tileCacheSize": 1024,
+            "terrainExaggeration": 1.0,
+            "terrainExaggerationRelativeHeight": 0.0
+        },
+        "cameraController": {
+            "zoomFactor": 3.0,
+            "constrainedAxis": true,
+            "minimumZoomDistance": 1.0,
+            "maximumZoomDistance": 50000000.0,
+            "minimumCollisionTerrainHeight": 80000,
+            "enableRotate": true,
+            "enableTranslate": true,
+            "enableTilt": true,
+            "enableZoom": true,
+            "enableCollisionDetection": true
+        },
+        "removeDblClick": true,
+        "resolutionScale": 1.0,
+        "showSun": true,
+        "showMoon": true,
+        "showSkyBox": true,
+        "showSkyAtmosphere": true,
+        "fog": true,
+        "fxaa": true,
+        "highDynamicRange": false,
+        "backgroundColor": "#666666",
+        "scene3DOnly": false,
+        "shouldAnimate": true,
+        "shadows": false,
+        "useDefaultRenderLoop": true,
+        "targetFrameRate": 60,
+        "useBrowserRecommendedResolution": true,
+        "automaticallyTrackDataSourceClocks": true,
+        "orderIndependentTranslucency": true,
+        "requestRenderMode": true
+    },
+    "mouseOptionsmap": {
+        "enabledMoveTarget": true,
+        "moveDelay": 0
+    },
+    "control": {
+        "zoom": {
+            "insertIndex": 1
+        },
+        "defaultContextMenu": true,
+        "mouseDownView": true,
+        "infoBox": false,
+        "selectionIndicator": false,
+        "animation": false,
+        "timeline": false,
+        "baseLayerPicker": true,
+        "fullscreenButton": true,
+        "vrButton": false,
+        "geocoder": true,
+        "homeButton": true,
+        "sceneModePicker": true,
+        "projectionPicker": false,
+        "navigationHelpButton": true,
+        "navigationInstructionsInitiallyVisible": false,
+        "showRenderLoopErrors": false
+    }
+}

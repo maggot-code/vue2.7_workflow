@@ -1,22 +1,27 @@
 /*
- * @FilePath: \vue2.7_workflow\vite.config.js
+ * @FilePath: \arcgismap\vite.config.js
  * @Author: maggot-code
  * @Date: 2022-07-23 23:29:33
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-27 15:06:57
+ * @LastEditTime: 2022-08-09 17:07:33
  * @Description:
  */
 import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import vue from '@vitejs/plugin-vue2';
+import vitePluginCesium from 'vite-plugin-mars3d';
 import legacy from '@vitejs/plugin-legacy';
 import viteComperssion from 'vite-plugin-compression';
 import viteComponents from 'unplugin-vue-components/vite';
 import { ElementUiResolver } from 'unplugin-vue-components/resolvers';
+import { visualizer } from 'rollup-plugin-visualizer';
+
+const mars3dCesium = vitePluginCesium['default'];
 
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
         vue(),
+        mars3dCesium(),
         splitVendorChunkPlugin(),
         legacy({
             targets: ['defaults', 'not ie < 9'],
@@ -41,6 +46,12 @@ export default defineConfig({
             transformer: 'vue2',
             dts: true,
             deep: true,
+        }),
+        visualizer({
+            filename: './node_modules/.cache/visualizer/stats.html',
+            open: true,
+            gzipSize: true,
+            brotliSize: true,
         }),
     ],
     css: {

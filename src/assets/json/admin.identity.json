@@ -12,33 +12,7 @@
                     "id": "7",
                     "pid": "1",
                     "name": "降雨预报",
-                    "component": "rain-forecast",
-                    "renderChild": true,
-                    "children": [
-                        {
-                            "id": "71",
-                            "pid": "7",
-                            "name": "调试降雨",
-                            "renderChild": true,
-                            "children": [
-                                {
-                                    "id": "711",
-                                    "pid": "71",
-                                    "name": "降雨少吗"
-                                },
-                                {
-                                    "id": "712",
-                                    "pid": "71",
-                                    "name": "降雨多吗"
-                                }
-                            ]
-                        },
-                        {
-                            "id": "72",
-                            "pid": "7",
-                            "name": "调试预报"
-                        }
-                    ]
+                    "component": "rain-forecast"
                 },
                 {
                     "id": "8",
@@ -62,20 +36,7 @@
                     "id": "11",
                     "pid": "1",
                     "name": "降雨开始时间",
-                    "component": "rain-start-time",
-                    "renderChild": true,
-                    "children": [
-                        {
-                            "id": "111",
-                            "pid": "11",
-                            "name": "开始了"
-                        },
-                        {
-                            "id": "112",
-                            "pid": "11",
-                            "name": "结束了"
-                        }
-                    ]
+                    "component": "rain-start-time"
                 },
                 {
                     "id": "12",
@@ -166,7 +127,6 @@
                     "pid": "3",
                     "name": "潮白河流域",
                     "component": "basin-domain",
-                    "renderChild": true,
                     "children": [
                         {
                             "id": "35",

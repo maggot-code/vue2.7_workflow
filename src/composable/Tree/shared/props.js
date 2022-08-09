@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-29 15:18:02
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-08 15:35:29
+ * @LastEditTime: 2022-08-09 14:10:54
  * @Description:
  */
 export const NodeProps = {
@@ -14,6 +14,10 @@ export const NodeProps = {
     nodePath: {
         type: Array,
         default: () => [],
+    },
+    meta: {
+        type: Object,
+        default: () => ({}),
     },
     id: {
         type: [String, Number],

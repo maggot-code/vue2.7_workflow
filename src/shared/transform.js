@@ -3,10 +3,10 @@
  * @Author: maggot-code
  * @Date: 2022-07-27 16:22:14
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-01 13:49:11
+ * @LastEditTime: 2022-08-09 14:09:24
  * @Description:
  */
-import { isNil, isArray, isString, isBoolean } from 'lodash';
+import { isNil, isArray, isString, isBoolean, isObjectLike } from 'lodash';
 
 export function toUsabled(target, voidValue, validValue) {
     return isNil(target) ? voidValue : validValue;
@@ -22,4 +22,8 @@ export function toString(target, def = '') {
 
 export function toBoolean(target, def = false) {
     return isBoolean(target) ? target : def;
+}
+
+export function toObject(target, def = {}) {
+    return isObjectLike(target) ? target : def;
 }

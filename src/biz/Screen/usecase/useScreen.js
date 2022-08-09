@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-08-09 10:46:50
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-09 13:43:41
+ * @LastEditTime: 2022-08-09 14:35:15
  * @Description:
  */
 import { onMounted, provide, computed, unref, ref } from 'vue';
@@ -48,6 +48,7 @@ export function useScreen(props, emits) {
     });
     provide(ScreenSymbolName, {
         root: props,
+        hasScreenNode,
         screenVisible,
         activeNode,
         validNode,

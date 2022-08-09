@@ -3,20 +3,26 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:51:15
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-09 13:39:29
+ * @LastEditTime: 2022-08-09 14:49:08
  * @Description: 预报模块
 -->
 <script setup>
+import { defineCustomComponent } from "@/composable/Component";
 import { ScreenMenu, useScreenProps } from "@/biz/Screen";
+import components from "./children/install";
 
 const props = defineProps(useScreenProps());
+const { componentName, setupComponent, setupName } = defineCustomComponent(components);
 function handlerNode({ valid }) {
-    console.log(valid.componentName);
+    setupComponent(valid.componentName);
 }
 </script>
 
 <template>
-    <ScreenMenu v-bind="props" @change="handlerNode"></ScreenMenu>
+    <div>
+        <ScreenMenu v-bind="props" @change="handlerNode"></ScreenMenu>
+        <component :is="setupName(componentName)"></component>
+    </div>
 </template>
 
 <style scoped lang='scss'>

@@ -3,11 +3,11 @@
  * @Author: maggot-code
  * @Date: 2022-08-02 16:57:47
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-09 13:44:06
+ * @LastEditTime: 2022-08-09 14:29:28
  * @Description: 
 -->
 <script setup>
-import { TreeNode } from "@/composable/Tree";
+import { TreeNode, propsToMeta } from "@/composable/Tree";
 import ScreenLabel from "./ScreenLabel.vue";
 import ScreenNode from "./ScreenNode.vue";
 
@@ -23,7 +23,7 @@ const { screenVisible, validNode, hasScreenNode } = useScreen(props, emits);
     <el-popover class="screen-menu" placement="right" trigger="click" v-model="screenVisible">
         <ScreenLabel slot="reference" :label="validNode.name"></ScreenLabel>
         <template v-if="hasScreenNode">
-            <TreeNode v-for="(node) in props.children" :key="node.nodeKey" v-bind="node">
+            <TreeNode v-for="(node) in props.children" :key="node.nodeKey" v-bind="propsToMeta(node)">
                 <template #tonode="tonode">
                     <ScreenNode v-bind="tonode"></ScreenNode>
                 </template>

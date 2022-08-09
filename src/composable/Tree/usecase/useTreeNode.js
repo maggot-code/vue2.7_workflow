@@ -3,11 +3,11 @@
  * @Author: maggot-code
  * @Date: 2022-08-02 15:41:11
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-09 10:20:25
+ * @LastEditTime: 2022-08-09 14:32:08
  * @Description:
  */
 import { provide } from 'vue';
-import { cloneDeep, assign } from 'lodash';
+import { assign } from 'lodash';
 
 function setupToloop(node) {
     return node.hasChild;
@@ -18,7 +18,7 @@ export const TreeNodeConfig = {
 };
 
 export function useTreeNode(props, config = TreeNodeConfig) {
-    const bind = assign(TreeNodeConfig, cloneDeep(config));
+    const bind = assign(TreeNodeConfig, config);
 
     provide(props.nodeKey, bind);
 

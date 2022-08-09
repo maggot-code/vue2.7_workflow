@@ -3,10 +3,12 @@
  * @Author: maggot-code
  * @Date: 2022-07-29 17:08:11
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-08 16:15:55
+ * @LastEditTime: 2022-08-09 14:48:13
  * @Description:
  */
+import { ref, unref } from 'vue';
 export function useComponent(components = []) {
+    const componentName = ref('unknow');
     const modules = {};
 
     const installs = function (Vue) {
@@ -27,11 +29,17 @@ export function useComponent(components = []) {
         modules[component.__name] = component;
     });
 
-    const setupName = (name) => {
-        return modules[name] ?? 'unknow';
-    };
+    function setupComponent(name) {
+        componentName.value = unref(name);
+        return name;
+    }
+    function setupName(name) {
+        return modules[unref(name)] ?? 'unknow';
+    }
 
     return {
+        componentName,
+        setupComponent,
         setupName,
     };
 }

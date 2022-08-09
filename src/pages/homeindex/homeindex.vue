@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:46:02
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-09 13:29:27
+ * @LastEditTime: 2022-08-09 14:58:13
  * @Description: 防汛作战大屏容器
 -->
 <script setup>
@@ -21,16 +21,18 @@ const { screenTreeCut, setupScreenTree } = useScreenTree();
 
 onMounted(() => {
     setupScreenTree(AdminIdentity.modules);
-    console.log(screenTreeCut.value);
 });
 </script>
 
 <template>
     <div class="home-index">
-        <template v-for="(row) in screenTreeCut">
-            <template v-for="(node) in row">
-                <component :key="node.nodeKey" :is="setupName(node.componentName)" v-bind="node"></component>
-            </template>
+        <template v-for="(row, index) in screenTreeCut">
+            <div :key="index" class="home-index-row">
+                <template v-for="(node) in row">
+                    <component class="home-index-row-item" :key="node.nodeKey" :is="setupName(node.componentName)"
+                        v-bind="node"></component>
+                </template>
+            </div>
         </template>
     </div>
 </template>

@@ -3,11 +3,12 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 17:08:46
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-08 15:07:08
+ * @LastEditTime: 2022-08-09 14:10:04
  * @Description:
  */
 import { v4 } from 'uuid';
 import { flow, isArray } from 'lodash';
+import { toObject } from '@/shared/transform';
 import { mergeNodeToProps } from '../shared/utils';
 
 function setupKey(config) {
@@ -15,6 +16,13 @@ function setupKey(config) {
     return mergeNodeToProps(config, {
         key,
         nodeKey: key,
+    });
+}
+
+function setupMeta(config) {
+    const { node } = config;
+    return mergeNodeToProps(config, {
+        meta: toObject(node.meta),
     });
 }
 
@@ -47,9 +55,13 @@ function setupHasChildOnlyone(config) {
 }
 
 export function NodeEntity(config) {
-    return flow([setupKey, setupSort, setupHasChild, setupHasChildOnlyone])(
-        config
-    );
+    return flow([
+        setupKey,
+        setupMeta,
+        setupSort,
+        setupHasChild,
+        setupHasChildOnlyone,
+    ])(config);
 }
 
 export default NodeEntity;

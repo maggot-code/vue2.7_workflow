@@ -6,8 +6,12 @@
     height: 100%;
     overflow: hidden;
     &-row {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         position: absolute;
         top: 0;
+        width: 320px;
         height: 100%;
         &:first-child {
             left: 0;
@@ -18,6 +22,8 @@
         &-item {
             width: 100%;
             height: calc(100% / 3);
+            padding: 6px 0;
+            box-sizing: border-box;
             overflow: hidden;
         }
     }

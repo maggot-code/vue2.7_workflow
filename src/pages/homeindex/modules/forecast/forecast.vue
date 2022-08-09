@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-25 13:51:15
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-09 14:49:08
+ * @LastEditTime: 2022-08-09 15:05:40
  * @Description: 预报模块
 -->
 <script setup>
@@ -19,12 +19,12 @@ function handlerNode({ valid }) {
 </script>
 
 <template>
-    <div>
+    <div class="screen-grid">
         <ScreenMenu v-bind="props" @change="handlerNode"></ScreenMenu>
-        <component :is="setupName(componentName)"></component>
+        <component class="screen-grid-body" :is="setupName(componentName)"></component>
     </div>
 </template>
 
 <style scoped lang='scss'>
-@import "@/pages/homeindex/modules.scss";
+@import "@/pages/homeindex/grid.scss";
 </style>

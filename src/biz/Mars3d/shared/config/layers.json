@@ -1,0 +1,16 @@
+[
+    {
+        "type": "group",
+        "id": 20,
+        "name": "SupportLayerGroup"
+    },
+    {
+        "type": "xyz",
+        "id": 200,
+        "pid": 20,
+        "name": "DistrictBorderLayer",
+        "url": "https: //t{s}.tianditu.gov.cn/DataServer?T=ibo_w&x={x}&y={y}&l={z}",
+        "subdomains": "01234567",
+        "maximumLevel": 10
+    }
+]

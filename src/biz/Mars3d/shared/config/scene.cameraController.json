@@ -1,0 +1,12 @@
+{
+    "minimumZoomDistance": 1.0,
+    "maximumZoomDistance": 50000000.0,
+    "minimumCollisionTerrainHeight": 80000,
+    "zoomFactor": 3.0,
+    "constrainedAxis": true,
+    "enableRotate": true,
+    "enableTranslate": true,
+    "enableTilt": true,
+    "enableZoom": true,
+    "enableCollisionDetection": true
+}

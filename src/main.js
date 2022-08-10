@@ -12,12 +12,14 @@ import { setupRouter } from '@/router';
 import App from '@/App.vue';
 import Empty from '@/component/Empty.vue';
 import Unknow from '@/component/Unknow.vue';
+import Icon from '@/component/SpritePicture.vue';
 
 import 'normalize.css';
 import '@/assets/style/index.scss';
 
 Vue.component('Empty', Empty);
 Vue.component('Unknow', Unknow);
+Vue.component('Icon', Icon);
 
 new Vue({
     render: (h) => h(App),

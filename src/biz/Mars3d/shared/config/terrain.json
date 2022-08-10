@@ -1,0 +1,8 @@
+{
+    "type": "xyz",
+    "show": true,
+    "url": "http://data.mars3d.cn/terrain",
+    "requestWaterMask": true,
+    "requestVertexNormals": true,
+    "requestMetadata": true
+}

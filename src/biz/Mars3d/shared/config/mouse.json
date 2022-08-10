@@ -1,0 +1,7 @@
+{
+    "enabledMoveTarget": true,
+    "moveDelay": 30,
+    "pickWidth": 6,
+    "pickHeight": 6,
+    "pickLimit": 12
+}

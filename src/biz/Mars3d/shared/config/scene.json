@@ -1,0 +1,20 @@
+{
+    "backgroundColor": "#666666",
+    "showSun": true,
+    "showMoon": true,
+    "showSkyBox": true,
+    "showSkyAtmosphere": true,
+    "fog": true,
+    "fxaa": true,
+    "shadows": false,
+    "scene3DOnly": false,
+    "shouldAnimate": true,
+    "removeDblClick": true,
+    "highDynamicRange": false,
+    "useDefaultRenderLoop": true,
+    "useBrowserRecommendedResolution": true,
+    "automaticallyTrackDataSourceClocks": true,
+    "requestRenderMode": true,
+    "targetFrameRate": 60,
+    "resolutionScale": 1.0
+}

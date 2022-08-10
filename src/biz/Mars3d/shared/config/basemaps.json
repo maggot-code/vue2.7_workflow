@@ -1,0 +1,54 @@
+[
+    {
+        "type": "group",
+        "id": 10,
+        "name": "底图图层组"
+    },
+    {
+        "type": "group",
+        "id": 100,
+        "pid": 10,
+        "name": "影像底图",
+        "icon": "https://muyao1987.gitee.io/cdn/mars3d.cn/img/basemaps/tdt_img.png",
+        "show": true,
+        "layers": [
+            {
+                "type": "tdt",
+                "id": 101,
+                "pid": 100,
+                "name": "天地图-影像图",
+                "layer": "img_d"
+            },
+            {
+                "type": "tdt",
+                "id": 102,
+                "pid": 100,
+                "name": "天地图-影像图-标注",
+                "layer": "img_z"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "id": 110,
+        "pid": 10,
+        "name": "电子底图",
+        "icon": "https://muyao1987.gitee.io/cdn/mars3d.cn/img/basemaps/tdt_vec.png",
+        "layers": [
+            {
+                "type": "tdt",
+                "id": 111,
+                "pid": 110,
+                "name": "天地图-电子图",
+                "layer": "vec_d"
+            },
+            {
+                "type": "tdt",
+                "id": 112,
+                "pid": 110,
+                "name": "天地图-电子图-标注",
+                "layer": "vec_z"
+            }
+        ]
+    }
+]

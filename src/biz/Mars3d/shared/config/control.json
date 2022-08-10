@@ -1,0 +1,18 @@
+{
+    "showRenderLoopErrors": true,
+    "defaultContextMenu": true,
+    "infoBox": false,
+    "homeButton": true,
+    "sceneModePicker": true,
+    "projectionPicker": false,
+    "fullscreenButton": true,
+    "vrButton": false,
+    "geocoder": true,
+    "navigationHelpButton": true,
+    "navigationInstructionsInitiallyVisible": false,
+    "baseLayerPicker": true,
+    "animation": false,
+    "timeline": false,
+    "mouseDownView": true,
+    "selectionIndicator": false
+}

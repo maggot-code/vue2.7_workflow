@@ -2,8 +2,7 @@
  * @FilePath: \arcgismap\src\router\homeindex.js
  * @Author: maggot-code
  * @Date: 2022-07-25 16:44:24
- * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-09 17:29:07
+ * @LastEditTime: 2022-08-10 17:32:18
  * @Description: webpackChunkName: "HomeIndexPage"
  */
 export default [
@@ -26,21 +25,12 @@ export default [
             ),
     },
     {
-        path: '/tab',
-        name: 'TabIndexPage',
-        meta: {},
-        component: () =>
-            import(
-                /* webpackChunkName: "HomeIndexPage" */ '@/pages/tabindex/tabindex.vue'
-            ),
-    },
-    {
         path: '/map',
         name: 'MapViewPage',
         meta: {},
         component: () =>
             import(
-                /* webpackChunkName: "HomeIndexPage" */ '@/pages/map/map.vue'
+                /* webpackChunkName: "HomeIndexPage" */ '@/pages/mapview/mapview.vue'
             ),
     },
 ];

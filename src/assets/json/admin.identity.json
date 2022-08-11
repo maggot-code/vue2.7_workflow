@@ -127,11 +127,13 @@
                     "pid": "3",
                     "name": "潮白河流域",
                     "component": "basin-domain",
+                    "renderChild": true,
                     "children": [
                         {
                             "id": "35",
                             "pid": "23",
                             "name": "基础数据",
+                            "renderChild": true,
                             "children": [
                                 {
                                     "id": "48",

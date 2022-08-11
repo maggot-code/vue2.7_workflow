@@ -1,9 +1,9 @@
 /*
- * @FilePath: \vue2.7_workflow\src\pages\tabindex\view\hooks\useCheckJump.js
+ * @FilePath: \arcgismap\src\composable\Tab\hooks\useCheckJump.js
  * @Author: zhangxin
  * @Date: 2022-08-02 15:31:31
  * @LastEditors: zhangxin
- * @LastEditTime: 2022-08-05 10:13:54
+ * @LastEditTime: 2022-08-11 13:20:44
  * @Description:
  */
 
@@ -36,7 +36,6 @@ const viewRenderRules = {
 export function useCheckJump(tabMap) {
     const checkJump = (index) => {
         const { view } = tabMap[index];
-        console.log(view);
         const rules = Object.keys(TESTDATA).map((key) => {
             return viewRenderRules[key] && viewRenderRules[key](TESTDATA[key]);
         });

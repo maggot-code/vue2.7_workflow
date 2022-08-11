@@ -3,15 +3,16 @@
  * @Author: zhangxin
  * @Date: 2022-08-09 16:51:08
  * @LastEditors: zhangxin
- * @LastEditTime: 2022-08-10 15:57:20
+ * @LastEditTime: 2022-08-11 13:19:56
  * @Description:
 -->
 <script setup>
 import { Tabs, useTabsProps } from '@/composable/Tab';
 import TabsDefaultLabel from './TabsDefaultLabel.vue';
 const props = defineProps(useTabsProps());
+const emit = defineEmits(['tabClick']);
 const tabClick = (node, index) => {
-    console.log(node, index);
+    emit('tabClick', node, index);
 };
 </script>
 

@@ -1,9 +1,9 @@
 /*
- * @FilePath: \vue2.7_workflow\src\main.js
+ * @FilePath: \arcgismap\src\main.js
  * @Author: maggot-code
  * @Date: 2022-07-23 23:29:33
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-26 09:33:32
+ * @LastEditTime: 2022-08-11 15:15:56
  * @Description:
  */
 import Vue from 'vue';
@@ -15,6 +15,7 @@ import Unknow from '@/component/Unknow.vue';
 import Icon from '@/component/SpritePicture.vue';
 
 import 'normalize.css';
+import 'element-ui/lib/theme-chalk/index.css';
 import '@/assets/style/index.scss';
 
 Vue.component('Empty', Empty);

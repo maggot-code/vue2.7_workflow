@@ -1,9 +1,8 @@
 {
-    "showRenderLoopErrors": true,
     "defaultContextMenu": true,
     "infoBox": false,
     "homeButton": true,
-    "sceneModePicker": true,
+    "sceneModePicker": false,
     "projectionPicker": false,
     "fullscreenButton": true,
     "vrButton": false,
@@ -13,6 +12,5 @@
     "baseLayerPicker": true,
     "animation": false,
     "timeline": false,
-    "mouseDownView": true,
-    "selectionIndicator": false
+    "mouseDownView": true
 }

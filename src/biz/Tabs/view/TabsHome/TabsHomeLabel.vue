@@ -3,11 +3,11 @@
  * @Author: zhangxin
  * @Date: 2022-08-09 16:57:01
  * @LastEditors: zhangxin
- * @LastEditTime: 2022-08-10 15:58:18
+ * @LastEditTime: 2022-08-11 13:17:01
  * @Description:
 -->
 <script setup>
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 defineProps({
     node: {
         type: Object,
@@ -22,22 +22,13 @@ defineProps({
         default: 0,
     },
 });
-const tabsHomeLabelRefs = ref();
-const elWidth = computed(() => {
-    if (tabsHomeLabelRefs.value) {
-        return tabsHomeLabelRefs.value.clientWidth + 40 + 'px';
-    } else {
-        console.log('为什么每次都走这里');
-        return '100px';
-    }
-});
+const elWidth = ref('100px');
 </script>
 
 <template>
     <div
         class="tabs-home-label"
         :style="{width:elWidth}"
-        ref="tabsHomeLabelRefs"
         :class="baseIndex === index ? 'is-active': ''"
     >
         <span>{{node.name ?? '未知标签'}}</span>
@@ -54,6 +45,7 @@ const elWidth = computed(() => {
     word-break: keep-all;
     white-space: nowrap;
     background-size: cover;
+    cursor: pointer;
     :hover {
         color: #d5f83b;
     }

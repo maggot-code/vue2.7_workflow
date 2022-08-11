@@ -14,7 +14,7 @@
     "useDefaultRenderLoop": true,
     "useBrowserRecommendedResolution": true,
     "automaticallyTrackDataSourceClocks": true,
-    "requestRenderMode": true,
+    "requestRenderMode": false,
     "targetFrameRate": 60,
     "resolutionScale": 1.0
 }

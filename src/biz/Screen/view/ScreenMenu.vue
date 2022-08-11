@@ -43,10 +43,6 @@ const { screenVisible, validNode, hasScreenNode } = useScreen(props, emits);
 </template>
 
 <style scoped lang='scss'>
-.screen-menu {
-    width: 100%;
-    box-sizing: border-box;
-}
 </style>
 <style lang="scss">
 @import '../style/ScreenMenu.scss';

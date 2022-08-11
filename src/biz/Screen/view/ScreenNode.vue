@@ -62,10 +62,14 @@ function handlerNode() {
     font-size: 14px;
     line-height: 32px;
     color: #fff;
+    cursor: pointer; //鼠标变手
+}
+.screen-node:hover {
+    color: #0ec2f5;
 }
 
 .screen-node-contain {
-    color: #23e89d;
+    color: #e6a23c;
 }
 
 .screen-node-active {

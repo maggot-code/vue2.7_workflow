@@ -3,35 +3,53 @@
  * @Author: maggot-code
  * @Date: 2022-08-09 17:28:18
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-10 18:21:24
+ * @LastEditTime: 2022-08-11 17:03:38
  * @Description: 
 -->
 <script setup>
-import { onMounted, onBeforeUnmount, unref, ref } from "vue";
+import { onMounted, onBeforeUnmount, unref, ref, watch, shallowRef } from "vue";
 import { Map } from "mars3d";
 import { useConfig } from "@/biz/Mars3d";
-const { config } = useConfig();
+
+const config = useConfig();
 console.log(config);
+
 const mapRefs = ref();
-let map;
+const map = shallowRef(null);
 
 onMounted(() => {
-    map = new Map(unref(mapRefs, config));
+    map.value = new Map(unref(mapRefs));
 });
 onBeforeUnmount(() => {
-    map.destroy();
-    map = null;
+    unref(map).destroy();
+    map.value = null;
 });
 </script>
 
 <template>
-    <div class="map-view" ref="mapRefs"></div>
+    <div class="map-view">
+        <div class="map-container" ref="mapRefs"></div>
+
+        <!-- <el-button-group class="map-group">
+            <el-button :disabled="true">{{ modeDescribe }}</el-button>
+            <el-button @click="sceneTo3D(map)">切换到3D</el-button>
+            <el-button @click="sceneTo2D(map)">切换到2D</el-button>
+            <el-button @click="sceneTo25D(map)">切换到2.5D</el-button>
+        </el-button-group> -->
+    </div>
 </template>
 
 <style scoped lang='scss'>
-.map-view {
+.map-view,
+.map-container {
     width: 100%;
     height: 100%;
     overflow: hidden;
+}
+
+.map-group {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 </style>

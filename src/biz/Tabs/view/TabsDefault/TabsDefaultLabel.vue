@@ -3,11 +3,11 @@
  * @Author: zhangxin
  * @Date: 2022-08-09 16:57:01
  * @LastEditors: zhangxin
- * @LastEditTime: 2022-08-10 16:09:22
+ * @LastEditTime: 2022-08-11 13:16:56
  * @Description:
 -->
 <script setup>
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 defineProps({
     node: {
         type: Object,
@@ -22,15 +22,7 @@ defineProps({
         default: 0,
     },
 });
-const tabsDefaultLabelRefs = ref();
-const elWidth = computed(() => {
-    if (tabsDefaultLabelRefs.value) {
-        return tabsDefaultLabelRefs.value.clientWidth + 20 + 'px';
-    } else {
-        console.log('为什么每次都走这里');
-        return '80px';
-    }
-});
+const elWidth = ref('80px');
 </script>
 
 <template>
@@ -50,6 +42,7 @@ const elWidth = computed(() => {
     color: #fff;
     word-break: keep-all;
     white-space: nowrap;
+    cursor: pointer;
     :hover {
         color: #7fffd4;
     }

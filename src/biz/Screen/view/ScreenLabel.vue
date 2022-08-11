@@ -33,6 +33,8 @@ defineProps({
 }
 .screen-label p {
     padding: 5px;
+    cursor: pointer; //鼠标变手
+    user-select: none; //禁止复制
 }
 .screen-label i {
     display: inline-block;

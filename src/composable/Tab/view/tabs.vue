@@ -2,12 +2,12 @@
  * @Author: abc088_6kAX_code 86451477+abc-0886kAX-code@users.noreply.github.com
  * @Date: 2022-07-29 13:28:52
  * @LastEditors: zhangxin
- * @LastEditTime: 2022-08-10 15:51:20
+ * @LastEditTime: 2022-08-11 13:16:30
  * @FilePath: \arcgismap\src\composable\Tab\view\tabs.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <script setup>
-import { unref, onMounted, computed } from 'vue';
+import { unref, onMounted, computed, ref } from 'vue';
 import { useTransform } from '@/composable/Tree';
 import { useComponentNode } from '@/composable/Component';
 import { useTabs } from '../hooks/useTabs';
@@ -36,32 +36,55 @@ function switchTabs(index) {
 const tabPosition = computed(() => {
     return props.tabPosition ?? 'default';
 });
-
 const paddingStyle = computed(() => {
     return tabPaddingStyle[props.tabPosition];
 });
 
+const tabsHeadRefs = ref();
+const isShowPlace = ref(false);
+const moveLocation = (place) => {
+    tabsHeadRefs.value.scrollLeft =
+        place === 'left'
+            ? tabsHeadRefs.value.scrollLeft - 150
+            : tabsHeadRefs.value.scrollLeft + 150;
+};
+
 onMounted(() => {
     switchTabs(unref(defaultIndex));
+    isShowPlace.value =
+        tabsHeadRefs.value.scrollWidth !== tabsHeadRefs.value.clientWidth &&
+        props.tabPosition === 'default';
 });
 </script>
 
 <template>
     <div class="tabs">
-        <div class="tabs-head" :class="tabPosition">
+        <div v-if="isShowPlace" class="icon-left" @click="moveLocation('left')">
+            <i class="el-icon-caret-left"></i>
+        </div>
+        <div
+            v-if="isShowPlace"
+            class="icon-right"
+            @click="moveLocation('right')"
+        >
+            <i class="el-icon-caret-right"></i>
+        </div>
+        <div
+            class="tabs-head"
+            :class="[tabPosition,isShowPlace ? 'is-show-place':'']"
+            ref="tabsHeadRefs"
+        >
             <template v-for="(node,index) in data">
                 <div
                     :key="node.id"
                     @click.stop="switchTabs(index)"
                     :style="paddingStyle"
                 >
-                    <a href="javascript:void(0);" class="a-style">
-                        <slot
-                            class="tabs-head-item-tab"
-                            name="label"
-                            v-bind="{node,baseIndex,index,tabPosition}"
-                        ></slot>
-                    </a>
+                    <slot
+                        class="tabs-head-item-tab"
+                        name="label"
+                        v-bind="{node,baseIndex,index,tabPosition}"
+                    ></slot>
                 </div>
             </template>
         </div>
@@ -70,26 +93,5 @@ onMounted(() => {
 </template>
 
 <style scoped lang='scss'>
-.tabs {
-    width: 100%;
-    height: 100%;
-    &-head {
-        padding: 5px 0 10px 5px;
-    }
-}
-.a-style {
-    text-decoration: none;
-    color: #000;
-}
-
-.default {
-    display: flex;
-    overflow-x: auto;
-}
-.left {
-    float: left;
-}
-.right {
-    float: right;
-}
+@import url('./tabs.scss');
 </style>

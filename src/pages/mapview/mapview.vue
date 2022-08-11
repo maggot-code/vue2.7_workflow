@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-08-09 17:28:18
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-11 17:03:38
+ * @LastEditTime: 2022-08-11 18:20:08
  * @Description: 
 -->
 <script setup>
@@ -17,8 +17,26 @@ console.log(config);
 const mapRefs = ref();
 const map = shallowRef(null);
 
+const sceneMode = ref(3);
+function setupSceneModeTo2D() {
+    sceneMode.value = 2;
+}
+function setupSceneModeTo3D() {
+    sceneMode.value = 3;
+}
+
+watch(sceneMode, (mode) => {
+    unref(map).setSceneOptions({
+        sceneMode: mode
+    });
+});
+
 onMounted(() => {
-    map.value = new Map(unref(mapRefs));
+    map.value = new Map(unref(mapRefs), {
+        scene: {
+            sceneMode: unref(sceneMode)
+        }
+    });
 });
 onBeforeUnmount(() => {
     unref(map).destroy();
@@ -30,12 +48,14 @@ onBeforeUnmount(() => {
     <div class="map-view">
         <div class="map-container" ref="mapRefs"></div>
 
-        <!-- <el-button-group class="map-group">
-            <el-button :disabled="true">{{ modeDescribe }}</el-button>
+        <el-button-group class="map-group">
+            <!-- <el-button :disabled="true">{{ modeDescribe }}</el-button>
             <el-button @click="sceneTo3D(map)">切换到3D</el-button>
             <el-button @click="sceneTo2D(map)">切换到2D</el-button>
-            <el-button @click="sceneTo25D(map)">切换到2.5D</el-button>
-        </el-button-group> -->
+            <el-button @click="sceneTo25D(map)">切换到2.5D</el-button> -->
+            <el-button @click="setupSceneModeTo2D">切换到2D</el-button>
+            <el-button @click="setupSceneModeTo3D">切换到3D</el-button>
+        </el-button-group>
     </div>
 </template>
 

@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-08-09 17:28:18
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-11 18:20:08
+ * @LastEditTime: 2022-08-12 17:23:52
  * @Description: 
 -->
 <script setup>
@@ -11,32 +11,12 @@ import { onMounted, onBeforeUnmount, unref, ref, watch, shallowRef } from "vue";
 import { Map } from "mars3d";
 import { useConfig } from "@/biz/Mars3d";
 
-const config = useConfig();
-console.log(config);
-
 const mapRefs = ref();
 const map = shallowRef(null);
-
-const sceneMode = ref(3);
-function setupSceneModeTo2D() {
-    sceneMode.value = 2;
-}
-function setupSceneModeTo3D() {
-    sceneMode.value = 3;
-}
-
-watch(sceneMode, (mode) => {
-    unref(map).setSceneOptions({
-        sceneMode: mode
-    });
-});
+const { config } = useConfig();
 
 onMounted(() => {
-    map.value = new Map(unref(mapRefs), {
-        scene: {
-            sceneMode: unref(sceneMode)
-        }
-    });
+    map.value = new Map(unref(mapRefs), config);
 });
 onBeforeUnmount(() => {
     unref(map).destroy();
@@ -53,8 +33,6 @@ onBeforeUnmount(() => {
             <el-button @click="sceneTo3D(map)">切换到3D</el-button>
             <el-button @click="sceneTo2D(map)">切换到2D</el-button>
             <el-button @click="sceneTo25D(map)">切换到2.5D</el-button> -->
-            <el-button @click="setupSceneModeTo2D">切换到2D</el-button>
-            <el-button @click="setupSceneModeTo3D">切换到3D</el-button>
         </el-button-group>
     </div>
 </template>

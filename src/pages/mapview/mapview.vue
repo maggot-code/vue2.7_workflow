@@ -3,25 +3,13 @@
  * @Author: maggot-code
  * @Date: 2022-08-09 17:28:18
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-12 17:23:52
+ * @LastEditTime: 2022-08-15 18:11:38
  * @Description: 
 -->
 <script setup>
-import { onMounted, onBeforeUnmount, unref, ref, watch, shallowRef } from "vue";
-import { Map } from "mars3d";
-import { useConfig } from "@/biz/Mars3d";
+import { defineMarsMap } from "@/biz/Mars3d";
 
-const mapRefs = ref();
-const map = shallowRef(null);
-const { config } = useConfig();
-
-onMounted(() => {
-    map.value = new Map(unref(mapRefs), config);
-});
-onBeforeUnmount(() => {
-    unref(map).destroy();
-    map.value = null;
-});
+const { mapRefs, map } = defineMarsMap();
 </script>
 
 <template>

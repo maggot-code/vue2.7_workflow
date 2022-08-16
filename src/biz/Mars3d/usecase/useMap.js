@@ -3,90 +3,62 @@
  * @Author: maggot-code
  * @Date: 2022-08-15 11:05:15
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-15 18:19:26
+ * @LastEditTime: 2022-08-16 18:20:49
  * @Description:
  */
-import {
-    provide,
-    onMounted,
-    onUnmounted,
-    unref,
-    ref,
-    shallowRef,
-    computed,
-} from 'vue';
-import { Cesium, EventType, Map } from 'mars3d';
-import { isNil } from 'lodash';
-import { v4 } from 'uuid';
+import { provide, onMounted, onUnmounted, unref, computed } from 'vue';
+import { EventType, thing } from 'mars3d';
 
-import { useEvent, useEventOnce } from './useEvent';
-import { useConfig } from './useConfig';
 import { MarsMapSymbolName } from '../shared/context';
 
-let previousTime = 0;
+import { MapViewEntity } from '../entity/Map/Map.view';
+import { useConfig } from './useConfig';
+import { useEventOnce } from './useEvent';
+import { useRotatePoint } from './useRotatePoint';
+import { useLoad } from '@/composable/Load';
 
-function effectRenderError() {
-    console.log('map view render error!');
-}
+const loadOptions = {
+    color: 'rgba(255,255,255,0.3)',
+    useIcon: false,
+    useTips: false,
+};
 
 export function useMap() {
-    const mapRefs = ref(null);
-    const map = shallowRef(null);
-    const hasMap = computed(() => !isNil(unref(map)));
+    const {
+        mapRefs,
+        mapReady,
+        map,
+        hasMap,
+        setupMap,
+        cancelMap,
+        effectMaploadReady,
+    } = MapViewEntity();
     const { config } = useConfig();
-
-    function createMap() {
-        if (unref(hasMap)) destroyMap();
-
-        map.value = new Map(unref(mapRefs), config);
-        map.value._id = v4();
-
-        return unref(map);
-    }
-    function destroyMap() {
-        if (!unref(hasMap)) return;
-
-        unref(map).destroy();
-        map.value = null;
-
-        return unref(map);
-    }
-
-    function effectRotate() {
-        console.log(11);
-        const spinRate = 1;
-        const currentTime = unref(map).clock.currentTime.secondsOfDay;
-        const delta = (currentTime - previousTime) / 1000;
-
-        previousTime = currentTime;
-        unref(map).scene.camera.rotate(
-            Cesium.Cartesian3.UNIT_Z,
-            -spinRate * delta
-        );
-    }
+    const { startRotate, stopRotate } = useRotatePoint(map, hasMap, mapReady);
+    const { load, loadBind } = useLoad(loadOptions);
+    const mapUsable = computed(() => {
+        return unref(hasMap) && unref(mapReady);
+    });
 
     const output = {
         mapRefs,
         map,
-        hasMap,
-        createMap,
-        destroyMap,
+        mapUsable,
+        mapload: load,
+        mapLoadbind: loadBind,
     };
 
+    async function install() {
+        const mapview = setupMap(config);
+        await mapview.openFlyAnimation();
+    }
+    function uninstall() {
+        cancelMap();
+    }
+    onMounted(install);
+    onUnmounted(uninstall);
+    useEventOnce(map, EventType.load, effectMaploadReady);
     provide(MarsMapSymbolName, output);
-
-    onMounted(() => {
-        const mapview = createMap();
-        previousTime = mapview.clock.currentTime.secondsOfDay;
-        useEventOnce(mapview, EventType.renderError, effectRenderError);
-        useEvent(mapview, EventType.clockTick, effectRotate);
-        console.log(mapview);
-    });
-
-    onUnmounted(() => {
-        destroyMap();
-    });
-
     return output;
 }
 

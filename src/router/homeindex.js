@@ -2,7 +2,7 @@
  * @FilePath: \arcgismap\src\router\homeindex.js
  * @Author: maggot-code
  * @Date: 2022-07-25 16:44:24
- * @LastEditTime: 2022-08-10 17:32:18
+ * @LastEditTime: 2022-08-16 13:21:46
  * @Description: webpackChunkName: "HomeIndexPage"
  */
 export default [
@@ -32,5 +32,17 @@ export default [
             import(
                 /* webpackChunkName: "HomeIndexPage" */ '@/pages/mapview/mapview.vue'
             ),
+
+        children: [
+            {
+                path: 'apply',
+                name: 'ApplyPage',
+                meta: {},
+                component: () =>
+                    import(
+                        /* webpackChunkName: "HomeIndexPage" */ '@/pages/apply/apply.vue'
+                    ),
+            },
+        ],
     },
 ];

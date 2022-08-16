@@ -1,6 +1,6 @@
 {
     "rotation": true,
     "className": "mars3d-compass",
-    "bottom": "0px",
-    "left": "0px"
+    "bottom": "48px",
+    "left": "12px"
 }

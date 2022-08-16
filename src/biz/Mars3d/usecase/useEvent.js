@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-08-15 16:24:23
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-15 17:29:23
+ * @LastEditTime: 2022-08-16 11:34:24
  * @Description:
  */
 import { onMounted, onBeforeUnmount, unref } from 'vue';
@@ -14,9 +14,17 @@ function toHandlers(args) {
 }
 
 export function useEventOnce(target, type, ...args) {
+    const handlers = toHandlers(args);
+
     onMounted(() => {
-        toHandlers(args).forEach((func) => unref(target).once(type, func));
+        handlers.forEach((func) => unref(target).once(type, func));
     });
+
+    onBeforeUnmount(() => {
+        handlers.forEach((func) => unref(target).off(type, func));
+    });
+
+    return target;
 }
 
 export function useEvent(target, type, ...args) {

@@ -3,63 +3,56 @@
  * @Author: maggot-code
  * @Date: 2022-08-15 11:05:15
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-16 18:20:49
+ * @LastEditTime: 2022-08-17 13:55:51
  * @Description:
  */
-import { provide, onMounted, onUnmounted, unref, computed } from 'vue';
-import { EventType, thing } from 'mars3d';
+import { provide, onMounted, onUnmounted, unref } from 'vue';
+import {} from 'mars3d';
 
-import { MarsMapSymbolName } from '../shared/context';
+import { MarsMapSymbolName, MarsMapLoadSymbolName } from '../shared/context';
 
 import { MapViewEntity } from '../entity/Map/Map.view';
 import { useConfig } from './useConfig';
-import { useEventOnce } from './useEvent';
-import { useRotatePoint } from './useRotatePoint';
+import { useRotate } from './useRotate';
 import { useLoad } from '@/composable/Load';
 
 const loadOptions = {
-    color: 'rgba(255,255,255,0.3)',
-    useIcon: false,
+    name: MarsMapLoadSymbolName,
+    color: 'rgba(0,0,0,0.3)',
     useTips: false,
 };
 
 export function useMap() {
-    const {
-        mapRefs,
-        mapReady,
-        map,
-        hasMap,
-        setupMap,
-        cancelMap,
-        effectMaploadReady,
-    } = MapViewEntity();
-    const { config } = useConfig();
-    const { startRotate, stopRotate } = useRotatePoint(map, hasMap, mapReady);
-    const { load, loadBind } = useLoad(loadOptions);
-    const mapUsable = computed(() => {
-        return unref(hasMap) && unref(mapReady);
+    const { loadBind, load } = useLoad(loadOptions);
+    const mapEntity = MapViewEntity();
+    const { map, mapRefs, toUsable, setupMap, cancelMap, effectMaploadReady } =
+        mapEntity;
+    const mapConfig = useConfig();
+    onMounted(() => setupMap(mapConfig));
+
+    const { rotatePoint } = useRotate({ mapEntity });
+    onMounted(async () => {
+        await unref(map).openFlyAnimation({ duration1: 4 });
+        rotatePoint.start();
+        effectMaploadReady();
+    });
+    onUnmounted(() => {
+        cancelMap();
     });
 
-    const output = {
+    provide(MarsMapSymbolName, {
+        map,
+        mapRefs,
+        toUsable,
+        mapConfig,
+    });
+    return {
+        maploading: load,
+        mapLoadbind: loadBind,
         mapRefs,
         map,
-        mapUsable,
-        mapload: load,
-        mapLoadbind: loadBind,
+        toUsable,
     };
-
-    async function install() {
-        const mapview = setupMap(config);
-        await mapview.openFlyAnimation();
-    }
-    function uninstall() {
-        cancelMap();
-    }
-    onMounted(install);
-    onUnmounted(uninstall);
-    useEventOnce(map, EventType.load, effectMaploadReady);
-    provide(MarsMapSymbolName, output);
-    return output;
 }
 
 export default useMap;

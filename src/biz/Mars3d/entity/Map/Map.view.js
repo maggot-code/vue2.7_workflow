@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-08-16 15:58:12
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-16 17:49:39
+ * @LastEditTime: 2022-08-17 13:33:28
  * @Description:
  */
 import { unref, ref, shallowRef, computed } from 'vue';
@@ -13,15 +13,17 @@ import { v4 } from 'uuid';
 import { toObject } from '@/shared/transform';
 
 export function MapViewEntity() {
-    const mapRefs = ref(null);
-    const mapReady = ref(false);
     const map = shallowRef(null);
-    const hasMap = computed(() => {
-        return !isNil(unref(map));
+    const mapRefs = ref(null);
+    const ready = ref(false);
+    const hasMap = computed(() => !isNil(unref(map)));
+    const toUsable = computed(() => {
+        return unref(hasMap) && unref(ready);
     });
 
-    function setupMap(config) {
+    function setupMap(mapConfig) {
         if (unref(hasMap)) cancelMap();
+        const { config } = mapConfig;
 
         map.value = new Map(unref(mapRefs), toObject(config));
         map.value._sign = v4();
@@ -40,21 +42,22 @@ export function MapViewEntity() {
             .loseContext();
         unref(map).destroy();
         map.value = null;
-        mapReady.value = false;
+        ready.value = false;
 
         return unref(map);
     }
 
     function effectMaploadReady() {
-        mapReady.value = true;
-        console.log('map view  load completed');
+        ready.value = true;
+        console.log('map view load completed');
     }
 
     return {
-        mapRefs,
-        mapReady,
         map,
+        mapRefs,
+        ready,
         hasMap,
+        toUsable,
         setupMap,
         cancelMap,
         effectMaploadReady,

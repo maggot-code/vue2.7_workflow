@@ -1,20 +1,28 @@
-import {} from 'vue';
+import { unref } from 'vue';
 import { thing } from 'mars3d';
-import { MarsRotatePointSymbolName } from '../../shared/context';
 
-const config = {
-    id: MarsRotatePointSymbolName,
+const rotatePoint = new thing.RotatePoint({
     direction: false,
     time: 60,
-};
+});
 
-export function RotatePointEntity() {
-    const rotatePoint = new thing.RotatePoint(config);
+export function RotatePointEntity(mapview) {
+    function bind() {
+        if (unref(mapview).hasThing(rotatePoint)) return;
+
+        unref(mapview).addThing(rotatePoint);
+    }
+    function unbind() {
+        if (!unref(mapview).hasThing(rotatePoint)) return;
+
+        rotatePoint.isStart && rotatePoint.stop();
+        unref(mapview).removeThing(rotatePoint, true);
+    }
 
     return {
         rotatePoint,
-        startRotate: rotatePoint.start,
-        stopRotate: rotatePoint.stop,
+        bind,
+        unbind,
     };
 }
 

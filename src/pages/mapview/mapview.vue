@@ -3,10 +3,13 @@
  * @Author: maggot-code
  * @Date: 2022-08-09 17:28:18
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-17 14:20:57
+ * @LastEditTime: 2022-08-18 13:28:39
  * @Description: 
 -->
-<script setup></script>
+<script setup>
+import { } from "@/biz/Essence";
+
+</script>
 
 <template>
     <div class="map-view">

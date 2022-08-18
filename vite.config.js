@@ -3,26 +3,24 @@
  * @Author: maggot-code
  * @Date: 2022-07-23 23:29:33
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-08-10 13:08:23
+ * @LastEditTime: 2022-08-18 13:14:57
  * @Description:
  */
 import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import vue from '@vitejs/plugin-vue2';
-// import mars3dPlugin from 'vite-plugin-mars3d';
+import mars3dCesium from 'vite-plugin-mars3d';
 import legacy from '@vitejs/plugin-legacy';
 import viteComperssion from 'vite-plugin-compression';
 import viteComponents from 'unplugin-vue-components/vite';
 import { ElementUiResolver } from 'unplugin-vue-components/resolvers';
 import { visualizer } from 'rollup-plugin-visualizer';
 
-// const vitePLuginCesium = mars3dPlugin['default'];
-
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
         vue(),
         splitVendorChunkPlugin(),
-        // vitePLuginCesium(),
+        mars3dCesium['default'](),
         legacy({
             targets: ['defaults', 'not ie < 9'],
         }),

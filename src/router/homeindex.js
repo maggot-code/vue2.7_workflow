@@ -2,7 +2,7 @@
  * @FilePath: \arcgismap\src\router\homeindex.js
  * @Author: maggot-code
  * @Date: 2022-07-25 16:44:24
- * @LastEditTime: 2022-08-16 13:21:46
+ * @LastEditTime: 2022-08-18 13:21:59
  * @Description: webpackChunkName: "HomeIndexPage"
  */
 export default [
@@ -35,8 +35,8 @@ export default [
 
         children: [
             {
-                path: 'apply',
-                name: 'ApplyPage',
+                path: ':name',
+                name: 'MapBodyPage',
                 meta: {},
                 component: () =>
                     import(
